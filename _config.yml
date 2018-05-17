@@ -23,6 +23,7 @@ description:
 
 # List of links in the navigation bar
 navbar-links:
+  Home: "http://leduykhongngu.github.io"
   Computer Science : "CS"
   Writing: "writing"
   About Me: "aboutme"
