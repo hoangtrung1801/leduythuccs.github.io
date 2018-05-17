@@ -1,5 +1,6 @@
 ---
 layout: post
+tag: [BLOG]
 title: First post!
 ---
   Xin chào, đây là bài viết đầu tiên của mình trên cái blog này, nếu đây là lần đầu cậu ghé thăm blog của mình thì cậu hãy thử đọc qua [about me](/aboutme) thử xem.  
