@@ -1,8 +1,12 @@
 ---
 layout: post
-tags: [writing]
+tags:
+  - writing
 title: First post!
 share-img: /img/path.jpg
+published: true
+image: /img/path.jpg
+date: 2018/05/17
 ---
   Xin chào, đây là bài viết đầu tiên của mình trên cái blog này, nếu đây là lần đầu cậu ghé thăm blog của mình thì cậu hãy thử đọc qua [about me](/aboutme) thử xem.  
   Tạm thời mình có thể sẽ viết về 2 chủ đề: 
