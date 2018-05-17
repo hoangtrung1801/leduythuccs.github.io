@@ -12,3 +12,4 @@ Xin chào cậu tới blog của tớ, nếu cậu chưa biết tớ thì hãy �
 - Có thể cậu đã thấy ở trang chủ: "This is where I will tell my friends way too much about me".
 - Mình sẽ nói về những thứ mình thích, hoặc về bản thân mình nữa, có thể là một bài nhạc, có thể là một bài tập nào đó mà mình thấy hay, hay đôi lúc là tản mạn về một vấn đề gì đó.
 - À có thể mình sẽ đưa một vài lời giải của bài tập mà mình cảm thấy hay lên trên này nữa.
+- Tớ viết văn không tốt nên dùng cái này luyện tập cách viết, à có một số bài mình sẽ cố viết văn tiếng anh để tăng khả năng tiếng anh :D
