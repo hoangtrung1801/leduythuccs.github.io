@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Blogs
+title: Computer Science Blogs
 use-site-title: true
 share-img: "/img/puffer.png"
 image: "/img/puffer.png"
@@ -9,7 +9,7 @@ image: "/img/puffer.png"
 <div class="posts-list">
   {% for post in site.posts %}
   {% if post.tags.size > 0 %}
-  {% if post.tags[0]=="SPOJ" %}
+  {% if post.tags[0]=="CS" %}
   <article class="post-preview">
     <a href="{{ post.url | prepend: site.baseurl }}">
       <h2 class="post-title">{{ post.title }}</h2>
