@@ -25,7 +25,7 @@ description:
 navbar-links:
   Home: "http://leduykhongngu.github.io"
   Computer Science : "CS"
-  Writing: "writing"
+  Linh tinh: "linh_tinh"
   About Me: "aboutme"
   #Resources:
     #- Beautiful Jekyll: "http://deanattali.com/beautiful-jekyll/"
