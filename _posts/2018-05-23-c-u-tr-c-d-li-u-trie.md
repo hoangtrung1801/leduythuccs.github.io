@@ -68,6 +68,7 @@ Ngoài ra, ta hoàn toàn có thể dùng Trie để quản lý tập hợp các
 * Tìm số nhỏ thứ k trong Trie.
 * Cho một số a đã có trong Trie, tìm xem nó là số lớn thứ mấy trong Trie.
 Trong bài viết này, mình sẽ không cung cấp code mẫu của Trie quản lý tập số, cũng như code của 2 truy vấn trên, xem như đây là bài tập dành cho bạn đọc :D. 
+
 ## Bài tập luyện tập
 Bài tập về Trie quản lý tập các xâu thì các bạn có thể xem ở vnoi wiki, ở đây mình đưa ra vài bài (có thể dùng) Trie quản lý các số để giải:
 * [Codeforces 948D]( http://codeforces.com/problemset/problem/948/D)
