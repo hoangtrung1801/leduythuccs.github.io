@@ -75,5 +75,4 @@ Bài tập về Trie quản lý tập các xâu thì các bạn có thể xem �
 * [VOJ – MEDIAN]( http://vn.spoj.com/problems/MEDIAN/)
 * [VOJ – ORDERSET]( http://vn.spoj.com/problems/ORDERSET/) (mình rất khuyết khích các bạn làm bài này bằng Trie, yêu cầu nhiều truy vấn trong 1 bài)
 ## Nguồn tham khảo
-[](http://vnoi.info/wiki/algo/data-structures/trie)
-
+[Vnoi](http://vnoi.info/wiki/algo/data-structures/trie)
