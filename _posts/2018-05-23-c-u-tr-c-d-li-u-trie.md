@@ -63,8 +63,12 @@ bool TrieFind(const string &s)
 * Thêm một xâu vào tập hợp.
 * Xóa một xâu khỏi tập hợp.
 * Kiểm tra một xâu có trong tập hợp hay không.
+
+
 Truy vấn 1 và 3 code trên của mình đã làm rõ, về truy vấn 2 thì dành lại cho người đọc vậy :D. 
 Ngoài ra, ta hoàn toàn có thể dùng Trie để quản lý tập hợp các số (bằng cách xem một số nguyên là một xâu gồm toàn số 1 và 0), và ngoài các truy vấn cơ bản ra, một Trie quản lý tập hợp các số thì có một số truy vấn sau.
+
+
 * Tìm số nhỏ thứ k trong Trie.
 * Cho một số a đã có trong Trie, tìm xem nó là số lớn thứ mấy trong Trie.
 Trong bài viết này, mình sẽ không cung cấp code mẫu của Trie quản lý tập số, cũng như code của 2 truy vấn trên, xem như đây là bài tập dành cho bạn đọc :D. 
