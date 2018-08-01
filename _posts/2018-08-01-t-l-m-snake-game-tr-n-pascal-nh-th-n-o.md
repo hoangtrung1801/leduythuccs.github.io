@@ -12,7 +12,7 @@ Tối qua tớ không ngủ được nên ngồi code Snake Game bằng Pascal :
 
 ### Bắt đầu thôi
 - Hiển nhiên là chơi Snake Game thì phải có con rắn rồi, ở đây mình viết một class TSnake, cơ bản thì nhìn nó như thế này:
-```pascal
+```objectpascal
         TSnake = class
                 private
                         Snake:TMyVector;
