@@ -1,7 +1,10 @@
 ---
 layout: post
-published: false
+published: true
 title: Tớ đã làm Snake Game trên Pascal như thế nào
+date: '2018-08-01'
+tags:
+  - CS
 ---
 ## A New Post
 
