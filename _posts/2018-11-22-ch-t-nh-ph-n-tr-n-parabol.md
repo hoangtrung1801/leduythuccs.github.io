@@ -9,7 +9,7 @@ tags:
 ---
 Hôm qua mình làm Freecontest gặp một bài dùng chặt nhị phân trên Parabol và mình chặt sai :v Sau khi được thông não thì mình viết bài này một phần để note lại vì sợ quên :))
 ## Vấn đề
-- Cho một hàm số lồi (hoặc lõm) F(x) có tập xác định trên đoạn nguyên [a;b] , tìm cực trị (cực đại hoặc cực tiểu tùy hàm lồi hoặc lõm) của hàm F(x). Nếu các bạn chưa rõ hàm lồi, lõm là gì thì nó có đồ thị hàm số giống một Parabol đó.
+- Cho một hàm số F(x) có tập xác định trên đoạn nguyên [a;b], đồ thị có dạng Parabol , tìm cực trị (cực đại hoặc cực tiểu tùy hình dạng hàm) của hàm F(x).
 
 
 ## Giải quyết
