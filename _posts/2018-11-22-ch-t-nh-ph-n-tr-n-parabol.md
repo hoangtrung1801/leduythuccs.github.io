@@ -1,7 +1,11 @@
 ---
 layout: post
-published: false
+published: true
 title: Chặt nhị phân trên Parabol
+date: '2018-11-22'
+tags:
+  - CS
+  - Binary Search
 ---
 Hôm qua mình làm Freecontest gặp một bài dùng chặt nhị phân trên Parabol và mình chặt sai :v Sau khi được thông não thì mình viết bài này một phần để note lại vì sợ quên :))
 ## Vấn đề
