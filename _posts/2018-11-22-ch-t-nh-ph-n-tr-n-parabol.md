@@ -23,7 +23,7 @@ Hôm qua mình làm Freecontest gặp một bài dùng chặt nhị phân trên 
 - Ví dụ cụ thể: Cho 2 hàm số L(x) và R(x) đều có tập xác định trên đoạn nguyên [a,b]. Hàm L(x) là hàm **không giảm** (tăng không nghiêm ngặt), R(x) là hàm **không tăng** (giảm không nghiêm ngặt). Gọi F(x)= max(L(x),R(x)), tìm cực tiểu của F(x). 
 	- Trong hình dưới đây, màu cam là hàm R(x), màu đen là hàm L(x)	![]({{site.baseurl}}/img/parabol.jpg).
     - Hàm F(x) có thể xem như là phần trên của cả 2 đồ thị kia. 
-- Cách giải quyết trường hợp này là mình đặt hàm D(x)=R(x)-L(x), D(x) có cùng tập xác định với L(x) và R(x). Dễ dàng chứng minh được D(x) là một hàm **không tăng** (tổng của 2 hàm không tăng là hàm không tăng). Để F(x) lớn nhất ta có thể chặt nhị phân tìm x0 lớn nhất thỏa mãn D(x0)>=0, lúc đó F(x0) là cực tiểu. 
+- Cách giải quyết trường hợp này là mình đặt hàm D(x)=R(x)-L(x), D(x) có cùng tập xác định với L(x) và R(x). Dễ dàng chứng minh được D(x) là một hàm **không tăng** (tổng của 2 hàm không tăng là hàm không tăng). Để F(x) nhỏ nhất ta có thể chặt nhị phân tìm x0 lớn nhất thỏa mãn D(x0)>=0, lúc đó F(x0) là cực tiểu. 
 
 ## Áp dụng
 - Cách chặt nhị phân trên hiệu 2 hàm kia áp dụng cho bài Copydata của FreeContest số 91, các cậu có thể xem đề ở [đây](https://drive.google.com/drive/folders/15-PvJrcr-m_vMk6vPGdYiM9t8qiaZC1b). Lời giải của mình các cậu có thể xem ở [đây](https://www.facebook.com/kc97blf/posts/2719806841578467?comment_id=2719813461577805).
