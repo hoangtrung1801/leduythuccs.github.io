@@ -16,8 +16,9 @@ Bài viết này mình nói tới một kỹ thuật khá hay của cây BIT2D (
 Thông thường, cây BIT2D (hay cả 1D) đều phải chứa dữ liệu trong một mảng 2D (hoặc 1D) với độ lớn ngang với kích thước các truy vấn. Do vậy, khi mà các truy vấn có giới hạn lớn thì thường các bạn sẽ dùng map (trong c++) để lưu cây BIT, điều này làm cho độ phức tạp tăng thêm log của map nữa. Kỹ thuật nén cây BIT2D là kỹ thuật để dùng cây BIT2D trong những bài toán yêu cầu bảng lớn (1e18\*1e18 vẫn làm được), **với điều kiện phải biết trước tất cả các truy vấn**. Mình học được kỹ thuật này trong 1 lần làm contest của VNOI.
 
 ## Bắt đầu thôi
-Xét bài toán: Cho một bảng hình chữ nhận kích thước mxn, ta có q truy vấn thuộc một trong 2 loại: truy vấn update một ô (u,v) lên x, và truy vấn lấy tổng hình chữ nhật (1,1) -> (u,v). giới hạn m,n,q là 1e6.
-Nếu mxn nhỏ (m\*n tầm 1e6) thì ta có thế dùng một cây BIT2D bình thường, code nó đơn giản thế này:
+Xét bài toán: Cho một bảng hình chữ nhận kích thước m\*n, ta có q truy vấn thuộc một trong 2 loại: truy vấn update một ô (u,v) lên x, và truy vấn lấy tổng hình chữ nhật (1,1) -> (u,v). giới hạn m,n,q là 1e6.
+
+Nếu m\*n nhỏ (m\*n tầm 1e6) thì ta có thế dùng một cây BIT2D bình thường, code nó đơn giản thế này:
 ```c++
 void update2D(int x, int y, int val) //cập nhật điểm (x,y) lên val
 {
