@@ -76,4 +76,5 @@ Các bạn có thể tham khảo code full ở [notebook của anh RR](https://g
 ## Bài tập áp dụng
 [Bài G - Thi thử VNOI](https://codeforces.com/group/FLVn1Sc504/contest/212925/problem/G) (các bạn phải vào [group]( https://codeforces.com/group/FLVn1Sc504) trước mới có thể xem được bài này).
 
-
+## Nguồn tham khảo
+[Editorial của Thi thử VNOI](https://codeforces.com/group/FLVn1Sc504/blog/entry/2229)
