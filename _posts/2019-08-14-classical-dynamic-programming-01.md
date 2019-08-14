@@ -19,6 +19,7 @@ QHĐ là một kỹ thuật giải các bài toán phức tạp bằng cách chi
 
 Bài này thì huyền thoại rồi, gần như luôn là ví dụ để hiểu hơn DP là gì. 
 Tóm tắt bài này chính là việc tính dãy số Fibonacci, dãy số này được định nghĩa như sau:
+$$Nani$$
 $$F_i= \left\{\begin{matrix} i, \text{if} \space i\le1 \\ F_{i-1}+F_{i-2}, \text{if} \space i\ge 2 \end{matrix}\right.$$
 Cài đặt công thức này không khó và điều mà rất nhiều người đã biết đó là việc tính số $F_n$ có thể tính được bằng cách  **nhân ma trận** với độ phức tạp là $O\left(2^3logn\right)=O\left(logn\right)$. 
 Tổng quát hơn, nếu một dãy số bất kì mà trạng thái sau là một **tổ hợp tuyến tính** của các trạng thái trước thì (về mặt lý thuyết) ta luôn có thể dùng nhân ma trận để tính được: 
