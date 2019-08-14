@@ -19,11 +19,10 @@ QHĐ là một kỹ thuật giải các bài toán phức tạp bằng cách chi
 
 Bài này thì huyền thoại rồi, gần như luôn là ví dụ để hiểu hơn DP là gì. 
 Tóm tắt bài này chính là việc tính dãy số Fibonacci, dãy số này được định nghĩa như sau:
-$$Nani$$
-$$F_i= \left\{\begin{matrix} i, \text{if} \space i\le1 \\ F_{i-1}+F_{i-2}, \text{if} \space i\ge 2 \end{matrix}\right.$$
+$$F_i= \begin{cases} i, \text{if} \space i\le1 \\ F_{i-1}+F_{i-2}, \text{if} \space i\ge 2 \end{cases}$$
 Cài đặt công thức này không khó và điều mà rất nhiều người đã biết đó là việc tính số $F_n$ có thể tính được bằng cách  **nhân ma trận** với độ phức tạp là $O\left(2^3logn\right)=O\left(logn\right)$. 
 Tổng quát hơn, nếu một dãy số bất kì mà trạng thái sau là một **tổ hợp tuyến tính** của các trạng thái trước thì (về mặt lý thuyết) ta luôn có thể dùng nhân ma trận để tính được: 
-$$F_i= \left\{\begin{matrix} a_i, \text{if} \space i < m \\ \sum_{k=1}^{m}c_k*F_{i-k}, \text{if} \space i \ge m \end{matrix}\right.$$
+$$F_i= \begin{cases}  a_i, \text{if} \space i < m \\ \sum_{k=1}^{m}c_k*F_{i-k}, \text{if} \space i \ge m \end{cases}$$
 Độ phức tạp để tính $F_n$ bây giờ là $O\left(m^3*logn\right)$
 ### 2. Dãy con tăng dài nhất (Longest Increasing Subsequence - LIS)
 Bài này thì nổi tiếng không kém gì bài trên, bạn nào đọc sách "Giải thuật và lập trình" của thầy Lê Mình Hoàng chắc chắn bài này là bài DP đầu tiên mà các bạn đọc.
