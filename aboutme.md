@@ -1,9 +1,9 @@
-
 ---
 layout: page
 title: About me
 subtitle: Hello world
 ---
+
 Welcome to my blog.
 - I'm Duy-Thuc Le, a 18 years old boy.
 - I'm a Computer Science major at HCM University of Science
