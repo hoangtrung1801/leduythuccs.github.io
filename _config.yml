@@ -4,11 +4,11 @@
 # baseurl is the website's URL without the hostname
 
 # If you are building a simple GitHub user page (http://username.github.io) then use these settings:
-url: "http://leduykhongngu.github.io"
+url: "http://leduythuccs.github.io"
 baseurl: ""
 
 # If you are building a GitHub project page then use these settings:
-#url: "http://leduykhongngu.github.io/projectname"
+#url: "http://leduythuccs.github.io/projectname"
 #baseurl: "/projectname"
 
 # Of course don't forget to change the username and projectname to YOUR username and project
@@ -23,7 +23,7 @@ description: My Blog
 
 # List of links in the navigation bar
 navbar-links:
-  Home: "http://leduykhongngu.github.io"
+  Home: "http://leduythuccs.github.io"
   Computer Science : "CS"
   Linh tinh: "linh_tinh"
   About Me: "aboutme"
@@ -74,9 +74,9 @@ author:
 # If you want to add a new link that isn't here, you'll need to also edit the file _data/SocialNetworks.yml
 social-network-links:
   rss: true
-  email: "leduykhongngu@gmail.com"
-  facebook: leduykhongngu
-  github: leduykhongngu
+  email: "leduythuccs@gmail.com"
+  facebook: leduythuccs
+  github: leduythuccs
 #  reddit: yourname
 #  google-plus: +DeanAttali
 #  linkedin: daattali
@@ -121,7 +121,7 @@ url-pretty: "Nocs's site"  # eg. "deanattali.com/beautiful-jekyll"
 
 # --- Misc --- #
 # Fill in your Disqus shortname (NOT the userid) if you want to support Disqus comments
-disqus: "leduykhongngu"
+disqus: "leduythuccs"
 
 # Facebook App ID
 # fb_app_id: ""
