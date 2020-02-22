@@ -152,6 +152,8 @@ Vấn đề tiếp theo là để làm như bài Area, ta cần biết được 
 
 Vậy làm sao ta có thể xác định được đâu là cạnh thêm vào, đâu là cạnh xóa đi? Ta có thể thực hiện duyệt qua từ đỉnh ở trái dưới, sau đó lần lượt men theo các cạnh mà đi hết đa giác, nếu 1 lúc nào đó ta đi hướng lên trên thì cạnh đó là cạnh +1, ngược lại, nếu đi xuống thì là -1. Sau đó thì chỉ cần xử lý trên segment tree như bài AREA là được. 
 
+Code tham khảo: [STARS.cpp](/data/VOI2020/STARS.cpp)
+
 ### Nhận xét:
 
 Đây là một bài khó, đã thế đề còn chứa rất nhiều thông tin nhiễu, trap. Nếu để bị đánh lừa, mất thời gian suy nghĩ về những cái trap thì sẽ rất khó khăn. 
