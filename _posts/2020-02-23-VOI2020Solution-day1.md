@@ -1,7 +1,7 @@
 ---
 layout: post
 published: true
-title: Lời giải đề thi HSG quốc gia môn tin học năm 2020
+title: 'Ngày 1 - Lời giải đề thi HSG quốc gia môn tin học năm 2020 '
 date: '2020-02-23'
 tags:
   - CS
