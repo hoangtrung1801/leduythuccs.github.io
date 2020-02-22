@@ -111,14 +111,13 @@ Sau khi có mảng $$Fa$$, với mỗi block $$i$$ ở $$A$$, ta cần thực hi
 
 Độ phức tạp: $$O(\sqrt{m} \times n)$$ để tính mảng $$Fa$$, $$O(m)$$ cho phần kiểm tra còn lại.
 
+Code tham khảo: [BUS.cpp](/data/VOI2020/BUS.cpp)
 
 ### Nhận xét:
 
 Bài này quá khó để dùng thuật chuẩn, chiến thuật tốt nhất cho bài này trong phòng thi chính là dùng các thuật tham như chặt tam phân. Chứ việc cày offline bài này trong phòng thi không khác gì tự hủy cả. Bài này lúc cài thuật chia căn thì mình cũng sai rất nhiều. May mà có test để debug :v.
 
 Các subtask cho bài này cũng rất khó, vì các subtask không bao nhau, ví dụ như sub 2 và 3 không liên quan gì nhau cả, nên có vét cũng phải cài rất mệt.
-
-Code tham khảo: [BUS.cpp](/data/VOI2020/BUS.cpp)
 
 ## Bài 3: STARS
 
