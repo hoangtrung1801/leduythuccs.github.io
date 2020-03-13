@@ -1,6 +1,6 @@
----
-layout: page
----
+<html>
+
+<head>
     <script>
         function fix_latex(data) {
             data = data.normalize("NFKD")
@@ -70,9 +70,16 @@ layout: page
             document.getElementById("latex_output").innerHTML = data;
         }
     </script>
+</head>
+
+<body>
 
     <h1>A Web Page</h1>
     <textarea id="latex_input" rows="30" cols="90">Latex Input</textarea>
     <textarea id="latex_output" rows="30" cols="90">Latex Output</textarea>
     <br />
     <button type="button" onclick="myFunction()">Try it</button>
+
+</body>
+
+</html>
