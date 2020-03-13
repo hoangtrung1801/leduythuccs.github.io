@@ -1,0 +1,85 @@
+<html>
+
+<head>
+    <script>
+        function fix_latex(data) {
+            data = data.normalize("NFKD")
+            data = data.replace(/\r/g,'')
+
+            // # add space after punctuation
+            data = data.replace(/([,\.\?!;:])/g, '$1 ')
+
+            // # \textbf{ s } -> $s$
+            data = data.replace(/\\textbf\{\s*(\w)\s*\}/g, '$$' + '$1' + '$$')
+            // # remove continuous space
+            data = data.replace(/ +/g, ' ')
+            // # remove space before punctuation
+            data = data.replace(/\s+([,\.\?!;:])/g, '$1')
+
+            // # remove space after (
+            data = data.replace(/\(\s+/g,'(')
+            // # remove space before )
+            data = data.replace(/\s+\)/g,')')
+            // # replace 1ex -> 10^{x}
+            data = data.replace(/1e(\d+)/g, '10^{$1}')
+            // # replace xey -> x * 10^{y}
+            data = data.replace(/(\d+)e(\d+)/g, '$1 \\times 10^{$2}')
+
+            // # remove space in the end of line
+            data = data.replace(/ +\n/g, '\n')
+            // # remove space in the beginning of line
+            data = data.replace(/\n +/g, '\n')
+
+            data = data.replace(/≤/g, '$$\\leq$$')
+            data = data.replace(/<=/g, '$$\\leq$$')
+            data = data.replace(/>=/g, '$$\\geq$$')
+            data = data.replace(/π/g, '$$\\pi$$')
+            data = data.replace(/\.\.\./g, ' \\dots')
+            data = data.replace(/->/g, '$$\\rightarrow$$')
+
+            // left = '[\(\)\[\] \n,\.:]'
+            // # replace number by $number$ 
+            data = data.replace(/([\(\)\[\] \n,\.:])(\d+)([\(\)\[\] \n,\.:])/g, '$1$$$2$$$3')
+            // # replace single charractor x by $x$
+            data = data.replace(/([\(\)\[\] \n,\.:])(\w)([\(\)\[\] \n,\.:])/g, '$1$$$2$$$3')
+            // # add space before and after $
+            data = data.replace(/\$/g, ' $$ ')
+            // # remove continuous space again
+            data = data.replace(/ +/g, ' ')
+            // # replace $space$ to space
+            data = data.replace(/\$ \$/g, ' ')
+            // # replce $ x $ to $x$
+            data = data.replace(/\$\s+([^\$]+)\s+\$/g, '$$$1$$')
+            // # add space after punctuation (again)
+            data = data.replace(/([,\.\?!;:])/g, '$1 ')
+            // # remove continuous space again
+            data = data.replace(/ +/g, ' ')
+            // # remove space before punctuation (again)
+            data = data.replace(/\s+([,\.\?!;:])/g, '$1')
+
+            // # remove space after ( (again)
+            data = data.replace(/\(\s+/g,'(')
+            // # remove space before ) (again)
+            data = data.replace(/\s+\)/g,')')
+            data = data.replace(/ +/g, ' ')
+            return data
+        }
+        function myFunction() {
+            let data = document.getElementById("latex_input").value;
+            data = fix_latex(data)
+            document.getElementById("latex_output").innerHTML = data;
+        }
+    </script>
+</head>
+
+<body>
+
+    <h1>A Web Page</h1>
+    <textarea id="latex_input" rows="30" cols="90">Latex Input</textarea>
+    <textarea id="latex_output" rows="30" cols="90">Latex Output</textarea>
+    <br />
+    <button type="button" onclick="myFunction()">Try it</button>
+
+</body>
+
+</html>
