@@ -10,7 +10,15 @@
             data = data.replace(/\n/g, '<br/>')
             // var tex = $(this).text();
             data = data.replace(/\$([^\$]+)\$/g, (...match) => {
-                return katex.renderToString(match[1], {displayMode: false});
+                s = "";
+                try {
+                    s = katex.renderToString(match[1], {displayMode: false});
+                }
+                catch(err) {
+                    s = "LATEX_ERROR";
+                    console.log(err.message);
+                }
+                return s;
             });
             document.getElementById("katex_output").innerHTML = data;
         }
@@ -59,11 +67,11 @@
             
             //replace xi -> $x_i$
             data = data.replace(/(^\p{L})(\w)(i|\d)^\p{L}/g, '$1$$$2_$3$$')
-            // left = '[\(\)\[\] \n,\.:]'
+            // left = '[\(\)\[\] \n,\.:;]'
             // # replace number by $number$ 
-            data = data.replace(/([\(\)\[\] \n,\.:])(\d+)([\(\)\[\] \n,\.:])/g, '$1$$$2$$$3')
+            data = data.replace(/([\(\)\[\] \n,\.:;])(\d+)([\(\)\[\] \n,\.:;])/g, '$1$$$2$$$3')
             // # replace single charractor x by $x$
-            data = data.replace(/([\(\)\[\] \n,\.:])(\w)([\(\)\[\] \n,\.:])/g, '$1$$$2$$$3')
+            data = data.replace(/([\(\)\[\] \n,\.:;])(\w)([\(\)\[\] \n,\.:;])/g, '$1$$$2$$$3')
             // # add space before and after $
             data = data.replace(/\$/g, ' $$ ')
             // # remove continuous space again
