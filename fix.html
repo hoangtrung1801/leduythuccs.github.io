@@ -27,11 +27,17 @@
             data = data.replace(/ +/g, ' ')
             // # remove space before punctuation
             data = data.replace(/\s+([,\.\?!;:])/g, '$1')
-
+            
             // # remove space after (
             data = data.replace(/\(\s+/g,'(')
             // # remove space before )
             data = data.replace(/\s+\)/g,')')
+            
+            //replace x^y -> x^{y}
+            data = data.replace(/(\w)\^(\w+)/g, '$$$1^\{$2}$$')
+            //replace * -> \times
+            data = data.replace(/\*/g, ' $$\\times$$ ')
+
             // # replace 1ex -> 10^{x}
             data = data.replace(/(\D)1e(\d+)/g, '$110^{$2}')
             // # replace xey -> x * 10^{y}
@@ -42,14 +48,14 @@
             // # remove space in the beginning of line
             data = data.replace(/\n +/g, '\n')
 
-            data = data.replace(/≤/g, '$$\\leq$$')
-            data = data.replace(/<=/g, '$$\\leq$$')
-            data = data.replace(/≥/g, '$$\\geq$$')
-            data = data.replace(/>=/g, '$$\\geq$$')
-            data = data.replace(/π/g, '$$\\pi$$')
+            data = data.replace(/≤/g, ' $$\\leq$$ ')
+            data = data.replace(/<=/g, ' $$\\leq$$ ')
+            data = data.replace(/≥/g, ' $$\\geq$$ ')
+            data = data.replace(/>=/g, ' $$\\geq$$ ')
+            data = data.replace(/π/g, ' $$\\pi$$ ')
             data = data.replace(/\.\.\./g, ' \\dots')
             data = data.replace(/->/g, '$$\\rightarrow$$')
-
+            
             //replace xi -> $x_i$
             data = data.replace(/(^\p{L})(\w)(i|\d)^\p{L}/g, '$1$$$2_$3$$')
             // left = '[\(\)\[\] \n,\.:]'
