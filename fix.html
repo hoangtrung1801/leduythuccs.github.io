@@ -38,8 +38,6 @@
             data = data.replace(/\.\.\./g, ' \\dots')
             data = data.replace(/->/g, '$$\\rightarrow$$')
 
-            //replace xi -> $x_i$
-            data = data.replace(/\u(\W)(\w)(i|\d)\W/g, '$1$$$2_$3$$')
             // left = '[\(\)\[\] \n,\.:]'
             // # replace number by $number$ 
             data = data.replace(/([\(\)\[\] \n,\.:])(\d+)([\(\)\[\] \n,\.:])/g, '$1$$$2$$$3')
