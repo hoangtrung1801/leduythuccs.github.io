@@ -45,6 +45,8 @@
             data = data.replace(/(\w)\^(\w+)/g, '$$$1^\{$2}$$')
             //replace * -> \times
             data = data.replace(/\*/g, ' $$\\times$$ ')
+            //replace × -> \times
+            data = data.replace(/×/g, ' $$\\times$$ ')
 
             // # replace 1ex -> 10^{x}
             data = data.replace(/(\D)1e(\d+)/g, '$110^{$2}')
@@ -55,7 +57,8 @@
             data = data.replace(/ +\n/g, '\n')
             // # remove space in the beginning of line
             data = data.replace(/\n +/g, '\n')
-
+            
+            data = data.replace(/=/g, ' $$=$$ ')
             data = data.replace(/≤/g, ' $$\\leq$$ ')
             data = data.replace(/<=/g, ' $$\\leq$$ ')
             data = data.replace(/≠/g, ' $$\\neq ')
