@@ -77,6 +77,10 @@
             // # remove space before ) (again)
             data = data.replace(/\s+\)/g,')')
             data = data.replace(/ +/g, ' ')
+            // # remove space in the end of line (again)
+            data = data.replace(/ +\n/g, '\n')
+            // # remove space in the beginning of line (again)
+            data = data.replace(/\n +/g, '\n')
             return data
         }
         function myFunction() {
@@ -110,7 +114,7 @@
         <a href="https://bit.ly/3cIIScT" target="_blank"> vấn đề </a>
     </p>
     <textarea id="latex_input" rows="30" cols="90">Dòng thứ nhất ghi số N là số điểm có thể đặt góc lâu đài.( 1 ≤ N ≤ 5000 )
-        
+
         N dòng sau ghi 2*N số nguyên là tọa độ N điểm có thể đặt góc lâu đài. ( Tọa độ của các điểm là các số nguyên có giá trị tuyệt đối nhỏ hơn 2^31 )</textarea>
     <textarea id="latex_output" rows="30" cols="90">Latex Output</textarea>
     <br />
