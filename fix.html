@@ -1,7 +1,19 @@
+<!DOCTYPE html>
 <html>
 
 <head>
+    <link rel="stylesheet" href="css/katex.min.css">
+    <script src="js/katex.min.js" ></script>
     <script>
+        function katex_show() {
+            let data = document.getElementById("latex_output").value;
+            data = data.replace(/\n/g, '<br/>')
+            // var tex = $(this).text();
+            data = data.replace(/\$([^\$]+)\$/g, (...match) => {
+                return katex.renderToString(match[1], {displayMode: false});
+            });
+            document.getElementById("katex_output").innerHTML = data;
+        }
         function fix_latex(data) {
             data = data.normalize("NFKD")
             data = data.replace(/\r/g,'')
@@ -38,6 +50,8 @@
             data = data.replace(/\.\.\./g, ' \\dots')
             data = data.replace(/->/g, '$$\\rightarrow$$')
 
+            //replace xi -> $x_i$
+            data = data.replace(/(^\p{L})(\w)(i|\d)^\p{L}/g, '$1$$$2_$3$$')
             // left = '[\(\)\[\] \n,\.:]'
             // # replace number by $number$ 
             data = data.replace(/([\(\)\[\] \n,\.:])(\d+)([\(\)\[\] \n,\.:])/g, '$1$$$2$$$3')
@@ -98,7 +112,13 @@
     <textarea id="latex_input" rows="30" cols="90">Latex Input</textarea>
     <textarea id="latex_output" rows="30" cols="90">Latex Output</textarea>
     <br />
-    <button type="button" onclick="myFunction()">Try it</button>
+    <button type="button" onclick="myFunction()">Bấm cái này để chuyển qua latex</button>
+    <button type="button" onclick="katex_show()">Bấm cái này để xem thử latex</button>
+    <br/>
+    <div id="katex_output">
+
+    </div>
+    <br/>
 
 </body>
 
