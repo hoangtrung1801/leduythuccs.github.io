@@ -21,7 +21,7 @@
             // # remove space before )
             data = data.replace(/\s+\)/g,')')
             // # replace 1ex -> 10^{x}
-            data = data.replace(/1e(\d+)/g, '10^{$1}')
+            data = data.replace(/\D1e(\d+)/g, '10^{$1}')
             // # replace xey -> x * 10^{y}
             data = data.replace(/(\d+)e(\d+)/g, '$1 \\times 10^{$2}')
 
