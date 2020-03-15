@@ -29,8 +29,8 @@
             // # add space after punctuation
             data = data.replace(/([,\.\?!;:])/g, '$1 ')
 
-            // # \textbf{ s } -> $s$
-            data = data.replace(/\\textbf\{\s*(\w)\s*\}/g, '$$' + '$1' + '$$')
+            // remove all \textbf{s}
+            data = data.replace(/\\textbf\{([^\}]*)\}/g, ' $1 ')
             // # remove continuous space
             data = data.replace(/ +/g, ' ')
             // # remove space before punctuation
@@ -69,8 +69,6 @@
             data = data.replace(/\.\./g, ' \\dots')
             data = data.replace(/->/g, '$$\\rightarrow$$')
             
-            //replace xi -> $x_i$
-            data = data.replace(/(^\p{L})(\w)(i|\d)^\p{L}/g, '$1$$$2_$3$$')
             // left = '[\(\)\[\] \n,\.:;]'
             // # replace number by $number$ 
             data = data.replace(/([\(\)\[\] \n,\.:;])(\d+)([\(\)\[\] \n,\.:;])/g, '$1$$$2$$$3')
