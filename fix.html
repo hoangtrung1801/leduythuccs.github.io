@@ -42,7 +42,7 @@
             data = data.replace(/\s+\)/g,')')
             
             //replace x^y -> x^{y}
-            data = data.replace(/(\w)\^(\w+)/g, '$$$1^\{$2}$$')
+            data = data.replace(/([^ ]+)\^(\w+)/g, '$$$1^\{$2}$$')
             //replace * -> \times
             data = data.replace(/\*/g, ' $$\\times$$ ')
             //replace × -> \times
