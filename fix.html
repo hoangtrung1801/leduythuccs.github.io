@@ -23,6 +23,7 @@
             document.getElementById("katex_output").innerHTML = data;
         }
         function fix_latex(data) {
+            data = ' ' + data + ' '
             data = data.normalize("NFKD")
             data = data.replace(/\r/g,'')
 
@@ -42,28 +43,28 @@
             data = data.replace(/\s+\)/g,')')
             
             //replace x^y -> x^{y}
-            data = data.replace(/([^ ]+)\^(\w+)/g, '$$$1^\{$2}$$')
+            data = data.replace(/(\w+)\^(\w+)/g, '$$$1^\{$2}$$')
             //replace * -> \times
             data = data.replace(/\*/g, ' $$\\times$$ ')
             //replace × -> \times
             data = data.replace(/×/g, ' $$\\times$$ ')
 
             // # replace 1ex -> 10^{x}
-            data = data.replace(/(\D)1e(\d+)/g, '$110^{$2}')
+            data = data.replace(/(\D)1e(\d+)/g, '$1$$10^{$2}$$')
             // # replace xey -> x * 10^{y}
-            data = data.replace(/(\d+)e(\d+)/g, '$1 \\times 10^{$2}')
+            data = data.replace(/(\d+)e(\d+)/g, '$$$1 \\times 10^{$2}$$')
 
             // # remove space in the end of line
             data = data.replace(/ +\n/g, '\n')
             // # remove space in the beginning of line
             data = data.replace(/\n +/g, '\n')
             
-            data = data.replace(/=/g, ' $$=$$ ')
             data = data.replace(/≤/g, ' $$\\leq$$ ')
             data = data.replace(/<=/g, ' $$\\leq$$ ')
-            data = data.replace(/≠/g, ' $$\\neq ')
+            data = data.replace(/≠/g, ' $$\\neq$$ ')
             data = data.replace(/≥/g, ' $$\\geq$$ ')
             data = data.replace(/>=/g, ' $$\\geq$$ ')
+            data = data.replace(/=/g, ' $$=$$ ')
             data = data.replace(/π/g, ' $$\\pi$$ ')
             data = data.replace(/\.\.\./g, ' \\dots')
             data = data.replace(/\.\./g, ' \\dots')
@@ -74,6 +75,12 @@
             data = data.replace(/([\(\)\[\] \n,\.:;])(\d+)([\(\)\[\] \n,\.:;])/g, '$1$$$2$$$3')
             // # replace single charractor x by $x$
             data = data.replace(/([\(\)\[\] \n,\.:;])(\w)([\(\)\[\] \n,\.:;])/g, '$1$$$2$$$3')
+            // doing it again to make sure everything is ok
+            // # replace number by $number$ 
+            data = data.replace(/([\(\)\[\] \n,\.:;])(\d+)([\(\)\[\] \n,\.:;])/g, '$1$$$2$$$3')
+            // # replace single charractor x by $x$
+            data = data.replace(/([\(\)\[\] \n,\.:;])(\w)([\(\)\[\] \n,\.:;])/g, '$1$$$2$$$3')
+
             // # add space before and after $
             data = data.replace(/\$/g, ' $$ ')
             // # remove continuous space again
@@ -98,7 +105,7 @@
             data = data.replace(/ +\n/g, '\n')
             // # remove space in the beginning of line (again)
             data = data.replace(/\n +/g, '\n')
-            return data
+            return data.trim();
         }
         function myFunction() {
             let data = document.getElementById("latex_input").value;
@@ -130,9 +137,21 @@
         Nếu gặp vấn đề gì khi làm, các bạn có thể note vào 
         <a href="https://bit.ly/3cIIScT" target="_blank"> vấn đề </a>
     </p>
-    <textarea id="latex_input" rows="30" cols="90">Dòng thứ nhất ghi số N là số điểm có thể đặt góc lâu đài.( 1 ≤ N ≤ 5000 )
+    <textarea id="latex_input" rows="30" cols="90">supported:
 
-        N dòng sau ghi 2*N số nguyên là tọa độ N điểm có thể đặt góc lâu đài. ( Tọa độ của các điểm là các số nguyên có giá trị tuyệt đối nhỏ hơn 2^31 )</textarea>
+        1e9 -> 10^9
+        2e18 -> 2 * 10^18
+        
+        a ≤ b
+        a &lt;= b
+        a ≠ b
+        a ≥ b
+        a >= b
+        Trước dấu câu không có space .
+        Sau dấu câu ,phải có space
+        Dòng thứ nhất ghi số N là số điểm có thể đặt góc lâu đài.( 1 ≤ N ≤ 5000 )
+        
+                N dòng sau ghi 2*N số nguyên là tọa độ N điểm có thể đặt góc lâu đài. ( Tọa độ của các điểm là các số nguyên có giá trị tuyệt đối nhỏ hơn 2^31 )</textarea>
     <textarea id="latex_output" rows="30" cols="90">Latex Output</textarea>
     <br />
     <button type="button" onclick="myFunction()">Bấm cái này để chuyển qua latex</button>
