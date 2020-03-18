@@ -26,7 +26,8 @@
             data = ' ' + data + ' '
             data = data.normalize("NFKD")
             data = data.replace(/\r/g,'')
-
+            
+            data = data.replace(/(\W)([a-zA-Z])([\dijk])(\W)/g, '$1$$$2_$3$$$4')
             // # add space after punctuation
             data = data.replace(/([,\.\?!;:])/g, '$1 ')
 
@@ -69,6 +70,7 @@
             data = data.replace(/\.\.\./g, ' \\dots')
             data = data.replace(/\.\./g, ' \\dots')
             data = data.replace(/->/g, '$$\\rightarrow$$')
+            
             
             // left = '[\(\)\[\] \n,\.:;]'
             // # replace number by $number$ 
@@ -141,7 +143,12 @@
 
         1e9 -> 10^9
         2e18 -> 2 * 10^18
-        
+        x1 -> x_1
+        x2 -> x_2
+        xk -> x_k
+        xi -> x_i
+        xj -> xj 
+        xu -> xu 
         a ≤ b
         a &lt;= b
         a ≠ b
