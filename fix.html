@@ -27,7 +27,7 @@
             data = data.normalize("NFKD")
             data = data.replace(/\r/g,'')
             
-            data = data.replace(/(\W)([a-zA-Z])([\dijk])(\W)/g, '$1$$$2_$3$$$4')
+            data = data.replace(/([\(\)\[\] \n,\.:;])([a-zA-Z])([\dijk])([\(\)\[\] \n,\.:;])/g, '$1$$$2_$3$$$4')
             // # add space after punctuation
             data = data.replace(/([,\.\?!;:])/g, '$1 ')
 
