@@ -23,11 +23,13 @@
             document.getElementById("katex_output").innerHTML = data;
         }
         function fix_latex(data) {
+            advanced_mode = document.getElementById("advanced_mode").checked;
             data = ' ' + data + ' '
             data = data.normalize("NFKD")
             data = data.replace(/\r/g,'')
-            
-            data = data.replace(/([\(\)\[\] \n,\.:;])([a-zA-Z])([\dijk])([\(\)\[\] \n,\.:;])/g, '$1$$$2_$3$$$4')
+            // xi -> x_i
+            if (advanced_mode == true)
+                data = data.replace(/([\(\)\[\] \n,\.:;])([a-zA-Z])([\dijk])([\(\)\[\] \n,\.:;])/g, '$1$$$2_$3$$$4')
             // # add space after punctuation
             data = data.replace(/([,\.\?!;:])/g, '$1 ')
 
@@ -139,16 +141,19 @@
         Nếu gặp vấn đề gì khi làm, các bạn có thể note vào 
         <a href="https://bit.ly/3cIIScT" target="_blank"> vấn đề </a>
     </p>
+    Advanced Mode: <input type="checkbox" id="advanced_mode"> Nếu check, các pattern như xi, ai, vi sẽ được đổi thành $x_i$, $a_i$, $v_i$. </br>. 
+    Cẩn thận khi dùng nó, vì nó có thể chuyển mấy cái như "di chuyển" thành "$d_i$ chuyển".
+    <br/>
     <textarea id="latex_input" rows="30" cols="90">supported:
 
         1e9 -> 10^9
         2e18 -> 2 * 10^18
-        x1 -> x_1
-        x2 -> x_2
-        xk -> x_k
-        xi -> x_i
-        xj -> xj 
-        xu -> xu 
+        x1 -> x_1 (advanced_mode)
+        x2 -> x_2 (advanced_mode)
+        xk -> x_k (advanced_mode)
+        xi -> x_i (advanced_mode)
+        xj -> xj (advanced_mode)
+        xu -> xu (advanced_mode)
         a ≤ b
         a &lt;= b
         a ≠ b
