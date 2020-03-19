@@ -3,7 +3,9 @@
 
 <head>
     <link rel="stylesheet" href="css/katex.min.css">
+    <link rel="stylesheet" href="css/style_diff.css"/>
     <script src="js/katex.min.js" ></script>
+    <script src="js/diff.js"></script>
     <script>
         function katex_show() {
             let data = document.getElementById("latex_output").value;
@@ -114,10 +116,44 @@
             return data.trim();
         }
         function myFunction() {
+            
             let data = document.getElementById("latex_input").value;
+            data = data.normalize("NFKD")
+            document.getElementById("latex_input").value = data
+            
             data = fix_latex(data)
             document.getElementById("latex_output").value = data;
+            changed();
         }
+        function changed() {
+            var one = document.getElementById("latex_input").value,
+            other = document.getElementById("latex_output").value;
+            var diff = JsDiff.diffChars(one, other),
+                display = document.getElementById('diff_output'),
+                fragment = document.createDocumentFragment();
+
+            for (var i=0; i < diff.length; i++) {
+                if (diff[i].added && diff[i + 1] && diff[i + 1].removed) {
+                    var swap = diff[i];
+                    diff[i] = diff[i + 1];
+                    diff[i + 1] = swap;
+                }
+                var node;
+                if (diff[i].removed) {
+                    node = document.createElement('del');
+                    node.appendChild(document.createTextNode(diff[i].value));
+                } else if (diff[i].added) {
+                    node = document.createElement('ins');
+                    node.appendChild(document.createTextNode(diff[i].value));
+                } else {
+                    node = document.createTextNode(diff[i].value);
+                }
+                fragment.appendChild(node);
+            }
+            display.textContent = '';
+            display.appendChild(fragment);
+        }
+
     </script>
 </head>
 
@@ -170,6 +206,8 @@
     <br />
     <button type="button" onclick="myFunction()">Bấm cái này để chuyển qua latex</button>
     <button type="button" onclick="katex_show()">Bấm cái này để xem thử latex</button>
+    <br/>
+    <td><pre id="diff_output"></pre></td>
     <br/>
     <div id="katex_output">
 
