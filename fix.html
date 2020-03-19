@@ -8,9 +8,8 @@
     <script src="js/diff.js"></script>
     <script>
         function katex_show() {
-            let data = document.getElementById("latex_output").value;
-            data = data.replace(/\n/g, '<br/>')
             // var tex = $(this).text();
+            let data = document.getElementById("latex_output").value;
             data = data.replace(/\$([^\$]+)\$/g, (...match) => {
                 s = "";
                 try {
@@ -22,6 +21,7 @@
                 }
                 return s;
             });
+            data = data.replace(/\n/g, '<br/>')
             document.getElementById("katex_output").innerHTML = data;
         }
         function fix_latex(data) {
@@ -29,9 +29,11 @@
             data = ' ' + data + ' '
             data = data.normalize("NFKD")
             data = data.replace(/\r/g,'')
+            data = data.replace(/\$(\s*)(.+?)(\s*)\$/g, '$$$2$$')
             // xi -> x_i
-            if (advanced_mode == true)
+            if (advanced_mode == true) {
                 data = data.replace(/([\(\) \n,\.:;])([a-zA-Z])([\dijk])([\(\) \n,\.:;])/g, '$1$$$2_$3$$$4')
+            }
             // # add space after punctuation
             data = data.replace(/([,\.\?!;:])/g, '$1 ')
 
@@ -49,6 +51,7 @@
             
             //replace x^y -> x^{y}
             data = data.replace(/(\w+)\^(\w+)/g, '$$$1^\{$2}$$')
+            
             //replace * -> \times
             data = data.replace(/\*/g, ' $$\\times$$ ')
             //replace × -> \times
@@ -71,6 +74,7 @@
             data = data.replace(/>=/g, ' $$\\geq$$ ')
             data = data.replace(/=/g, ' $$=$$ ')
             data = data.replace(/π/g, ' $$\\pi$$ ')
+            data = data.replace(/\.\.\.\./g, ' \\dots')
             data = data.replace(/\.\.\./g, ' \\dots')
             data = data.replace(/\.\./g, ' \\dots')
             data = data.replace(/->/g, '$$\\rightarrow$$')
@@ -94,7 +98,7 @@
             // # remove continuous space again
             data = data.replace(/ +/g, ' ')
             // # replace $space$ to space
-            data = data.replace(/\$ \$/g, ' ')
+            data = data.replace(/\$ +\$/g, ' ')
             // # replce $ x $ to $x$
             data = data.replace(/\$\s+([^\$]+)\s+\$/g, '$$$1$$')
             // # add space after punctuation (again)
@@ -116,19 +120,14 @@
             return data.trim();
         }
         function myFunction() {
-            
             let data = document.getElementById("latex_input").value;
             data = data.normalize("NFKD")
-            document.getElementById("latex_input").value = data
-            
-            data = fix_latex(data)
-            document.getElementById("latex_output").value = data;
-            changed();
+            new_data = fix_latex(data)
+            document.getElementById("latex_output").value = new_data;
+            changed(data, new_data);
         }
-        function changed() {
-            var one = document.getElementById("latex_input").value,
-            other = document.getElementById("latex_output").value;
-            var diff = JsDiff.diffChars(one, other),
+        function changed(old_data, new_data) {
+            var diff = JsDiff.diffChars(old_data, new_data),
                 display = document.getElementById('diff_output'),
                 fragment = document.createDocumentFragment();
 
@@ -157,10 +156,9 @@
     </script>
 </head>
 
-<body>
+<body onload = "myFunction()">
 
-    <p> Web này giúp các bạn quick fix 1 số tiêu chuẩn trong latex, có thể có lỗi, các bạn nên xem 
-        kỹ lại output. Làm cái này mình thấy fix nhanh hơn nhiều. <br/>
+    <p> 
         Một số quy tắc khi viết, chỉnh sửa đề: <br/>
         <ul>
             <li> Sau dấu câu thì không space, sau dấu ( trước dấu ) không có space.</li>
@@ -179,36 +177,37 @@
         Nếu gặp vấn đề gì khi làm, các bạn có thể note vào 
         <a href="https://bit.ly/3cIIScT" target="_blank"> vấn đề </a>
     </p>
-    Advanced Mode: <input type="checkbox" id="advanced_mode"> Nếu check, các pattern như xi, ai, vi sẽ được đổi thành $x_i$, $a_i$, $v_i$. </br>. 
+    Advanced Mode: <input type="checkbox" id="advanced_mode" onchange="myFunction()"> Nếu check, các pattern như xi, ai, vi sẽ được đổi thành $x_i$, $a_i$, $v_i$. </br>. 
     Cẩn thận khi dùng nó, vì nó có thể chuyển mấy cái như "di chuyển" thành "$d_i$ chuyển".
     <br/>
-    <textarea id="latex_input" rows="30" cols="90">supported:
+    <textarea id="latex_input" rows="30" cols="90" oninput="myFunction()">
+Các bạn nên dùng cái này trước khi chỉnh sửa, với cả cẩn thận mấy cái dấu đô có sẵn nha :'(. Cứ gõ, paste vào đây là nó tự chuyển.
+supported:
 
-        1e9 -> 10^9
-        2e18 -> 2 * 10^18
-        x1 -> x_1 (advanced_mode)
-        x2 -> x_2 (advanced_mode)
-        xk -> x_k (advanced_mode)
-        xi -> x_i (advanced_mode)
-        xj -> xj (advanced_mode)
-        xu -> xu (advanced_mode)
-        a ≤ b
-        a &lt;= b
-        a ≠ b
-        a ≥ b
-        a >= b
-        Trước dấu câu không có space .
-        Sau dấu câu ,phải có space
-        Dòng thứ nhất ghi số N là số điểm có thể đặt góc lâu đài.( 1 ≤ N ≤ 5000 )
-        
-                N dòng sau ghi 2*N số nguyên là tọa độ N điểm có thể đặt góc lâu đài. ( Tọa độ của các điểm là các số nguyên có giá trị tuyệt đối nhỏ hơn 2^31 )</textarea>
-    <textarea id="latex_output" rows="30" cols="90">Latex Output</textarea>
-    <br />
-    <button type="button" onclick="myFunction()">Bấm cái này để chuyển qua latex</button>
-    <button type="button" onclick="katex_show()">Bấm cái này để xem thử latex</button>
+1e9 -> 10^9
+2e18 -> 2 * 10^18
+x1 -> x_1 (advanced_mode)
+x2 -> x_2 (advanced_mode)
+xk -> x_k (advanced_mode)
+xi -> x_i (advanced_mode)
+xj -> x_j (advanced_mode)
+xu -> xu (giữ nguyên trong advanced_mode)
+a ≤ b
+a &lt;= b
+a ≠ b
+a ≥ b
+a >= b
+Trước dấu câu không có space .
+Sau dấu câu ,phải có space
+Dòng thứ nhất ghi số N là số điểm có thể đặt góc lâu đài.( 1 ≤ N ≤ 5000 )
+
+    N dòng sau ghi 2*N số nguyên là tọa độ N điểm có thể đặt góc lâu đài. ( Tọa độ của các điểm là các số nguyên có giá trị tuyệt đối nhỏ hơn 2^31 )</textarea>
+    <textarea id="latex_output" rows="30" cols="90"> </textarea>
     <br/>
+    <button id = "katex_btn" onclick="katex_show()"> Click to view latex</button>
     <td><pre id="diff_output"></pre></td>
     <br/>
+    <hr/>
     <div id="katex_output">
 
     </div>
