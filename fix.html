@@ -53,8 +53,8 @@
                 data = data.replace(/([\( \n,\.:;])([a-zA-Z])([\dijk])([\) \n,\.:;])/g, '$1$$$2_$3$$$4')
             }
             // # add space after punctuation
-            data = data.replace(/([,\.\?!;:])/g, '$1 ')
-
+            data = data.replace(/([,\?!;:])/g, '$1 ')
+            data = data.replace(/(\D)\.(\D)/g,'$1. $2')
             // remove all \textbf{s}
             data = remove_textbf(data)
             // data = data.replace(/\\textbf\{(.+?)\}/g, ' $1 ')
@@ -103,19 +103,19 @@
             
             // left = '[\(\) \n,\.:;]'
             // # replace number by $number$ 
-            data = data.replace(/([\( \n,\.:;])(\d+)([\) \n,\.:;])/g, '$1$$$2$$$3')
+            data = data.replace(/([\( \n,:;])(\d+)([\) \n,:;])/g, '$1$$$2$$$3')
             // # replace single charractor x by $x$
-            data = data.replace(/([\( \n,\.:;])(\w)([\) \n,\.:;])/g, '$1$$$2$$$3')
+            data = data.replace(/([\( \n,:;])(\w)([\) \n,:;])/g, '$1$$$2$$$3')
             // doing it again to make sure everything is ok
             // # replace numer\% by $number\%$
-            data = data.replace(/([\( \n,\.:;])(\d+)\\%([\) \n,\.:;])/g, '$1$$$2\\%$$$3')
-            data = data.replace(/([\( \n,\.:;])(\d+)%([\) \n,\.:;])/g, '$1$$$2\\%$$$3')
+            data = data.replace(/([\( \n,:;])(\d+)\\%([\) \n,:;])/g, '$1$$$2\\%$$$3')
+            data = data.replace(/([\( \n,:;])(\d+)%([\) \n,:;])/g, '$1$$$2\\%$$$3')
             // # replace number by $number$ 
-            data = data.replace(/([\( \n,\.:;])(\d+)([\) \n,\.:;])/g, '$1$$$2$$$3')
+            data = data.replace(/([\( \n,:;])(\d+)([\) \n,:;])/g, '$1$$$2$$$3')
             // # replace negative -number by $-number$
-            data = data.replace(/([\( \n,\.:;])(-\d+)([\) \n,\.:;])/g, '$1$$$2$$$3')
+            data = data.replace(/([\( \n,:;])(-\d+)([\) \n,:;])/g, '$1$$$2$$$3')
             // # replace single charractor x by $x$
-            data = data.replace(/([\( \n,\.:;])(\w)([\) \n,\.:;])/g, '$1$$$2$$$3')
+            data = data.replace(/([\( \n,\.:;])([a-zA-Z])([\) \n,\.:;])/g, '$1$$$2$$$3')
 
             // # add space before and after $
             data = data.replace(/\$/g, ' $$ ')
@@ -126,7 +126,8 @@
             // # replce $ x $ to $x$
             data = data.replace(/\$\s+([^\$]+)\s+\$/g, '$$$1$$')
             // # add space after punctuation (again)
-            data = data.replace(/([,\.\?!;:])/g, '$1 ')
+            data = data.replace(/([,\?!;:])/g, '$1 ')
+            data = data.replace(/(\D)\.(\D)/g,'$1. $2')
             // # remove continuous space again
             data = data.replace(/ +/g, ' ')
             // # remove space before punctuation (again)
