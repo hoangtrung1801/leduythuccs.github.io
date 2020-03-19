@@ -86,6 +86,9 @@
             // # replace single charractor x by $x$
             data = data.replace(/([\(\) \n,\.:;])(\w)([\(\) \n,\.:;])/g, '$1$$$2$$$3')
             // doing it again to make sure everything is ok
+            // # replace numer\% by $number\%$
+            data = data.replace(/([\(\) \n,\.:;])(\d+)\\%([\(\) \n,\.:;])/g, '$1$$$2\\%$$$3')
+            data = data.replace(/([\(\) \n,\.:;])(\d+)%([\(\) \n,\.:;])/g, '$1$$$2\\%$$$3')
             // # replace number by $number$ 
             data = data.replace(/([\(\) \n,\.:;])(\d+)([\(\) \n,\.:;])/g, '$1$$$2$$$3')
             // # replace negative -number by $-number$
