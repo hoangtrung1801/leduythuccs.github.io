@@ -120,6 +120,10 @@
             data = data.replace(/ +\n/g, '\n')
             // # remove space in the beginning of line (again)
             data = data.replace(/\n +/g, '\n')
+            // # replace ($ by $(
+            data = data.replace(/\(\$/g, '$$(')
+            // # replace $) by )$
+            data = data.replace(/\$\)/g, ')$$')
             return data.trim();
         }
         function myFunction() {
