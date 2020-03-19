@@ -9,3 +9,6 @@ ins {
 	color: #406619;
 	text-decoration: none;
 }
+pre {
+    white-space: pre-wrap;
+}
