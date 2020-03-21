@@ -25,12 +25,12 @@
             document.getElementById("katex_output").innerHTML = data;
         }
         function remove_textbf(data) {
-            data = data.replace(/\\textbf{/g, '#')
+            data = data.replace(/\\textbf{/g, '\1')
             var text = ""
             var cnt = 0;
             for (var i in data) {
                 c = data[i]
-                if (c == '#')
+                if (c == '\1')
                     continue;
                 if (c == '{') ++cnt;
                 if (c == '}') {
