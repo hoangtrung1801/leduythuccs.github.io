@@ -54,7 +54,6 @@
             }
             // # add space after punctuation
             data = data.replace(/([,\?!;:])/g, '$1 ')
-            data = data.replace(/(\D)\.(\D)/g,'$1. $2')
             // remove all \textbf{s}
             data = remove_textbf(data)
             // data = data.replace(/\\textbf\{(.+?)\}/g, ' $1 ')
@@ -99,6 +98,8 @@
             data = data.replace(/\.\.\./g, ' \\dots ')
             data = data.replace(/\.\./g, ' \\dots ')
             data = data.replace(/->/g, '$$\\rightarrow$$')
+            data = data.replace(/\+/g, ' $$+$$ ')
+            data = data.replace(/-/g, ' $$-$$ ')
             
             
             // left = '[\(\) \n,\.:;]'
