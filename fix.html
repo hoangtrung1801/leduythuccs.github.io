@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/style_diff.css"/>
     <script src="js/katex.min.js" ></script>
     <script src="js/diff.js"></script>
+    <script src="js/clipboard.min.js"></script>
     <script>
         function katex_show() {
             // var tex = $(this).text();
@@ -51,6 +52,7 @@
             // xi -> x_i
             if (advanced_mode == true) {
                 data = data.replace(/([\( \n,\.:;])([a-zA-Z])([\dijk])([\) \n,\.:;])/g, '$1$$$2_$3$$$4')
+                data = data.replace(/(\w)\[(.+?)\]/g, '$$$1_{$2}$$')
             }
             // # add space after punctuation
             data = data.replace(/([,\?!;:])/g, '$1 ')
@@ -87,6 +89,8 @@
             // # remove space in the beginning of line
             data = data.replace(/\n +/g, '\n')
             
+            data = data.replace(/->/g, '$$\\rightarrow$$')
+            data = data.replace(/=>/g, '$$\\rightarrow$$')
             data = data.replace(/≤/g, ' $$\\leq$$ ')
             data = data.replace(/<=/g, ' $$\\leq$$ ')
             data = data.replace(/≠/g, ' $$\\neq$$ ')
@@ -97,7 +101,6 @@
             data = data.replace(/\.\.\.\./g, ' \\dots ')
             data = data.replace(/\.\.\./g, ' \\dots ')
             data = data.replace(/\.\./g, ' \\dots ')
-            data = data.replace(/->/g, '$$\\rightarrow$$')
             data = data.replace(/\+/g, ' $$+$$ ')
             data = data.replace(/-/g, ' $$-$$ ')
             
@@ -147,6 +150,17 @@
             data = data.replace(/([\(\[])\$/g, '$$$1')
             // # replace $) by )$
             data = data.replace(/\$([\)\]])/g, '$1$$')
+            // # replace A$[ -> $A[
+            data = data.replace(/([a-zA-Z]+)\$([\[\(])/g,'$$$1$2')
+            // # replace ($ by $(
+            data = data.replace(/([\(\[])\$/g, '$$$1')
+            // # replace $) by )$
+            data = data.replace(/\$([\)\]])/g, '$1$$')
+            // # replace A$[ -> $A[
+            data = data.replace(/([a-zA-Z]+)\$([\[\(])/g,'$$$1$2')
+            
+            // $, $ -> ,
+            data = data.replace(/\$, \$/g, ', ')
             return data.trim();
         }
         function myFunction() {
@@ -187,7 +201,7 @@
 </head>
 
 <body onload = "myFunction()">
-
+    
     <p> 
         Một số quy tắc khi viết, chỉnh sửa đề: <br/>
         <ul>
@@ -207,8 +221,11 @@
         Nếu gặp vấn đề gì khi làm, các bạn có thể note vào 
         <a href="https://bit.ly/3cIIScT" target="_blank"> vấn đề </a>
     </p>
-    Advanced Mode: <input type="checkbox" id="advanced_mode" onchange="myFunction()"> Nếu check, các pattern như xi, ai, vi sẽ được đổi thành $x_i$, $a_i$, $v_i$. </br>. 
+    Advanced Mode: <input type="checkbox" id="advanced_mode" onchange="myFunction()"> Nếu check, các pattern như xi, ai, vi, x[i], a[m] sẽ được đổi thành x_i, a_i, v_i, a_m, a_n </br>. 
     Cẩn thận khi dùng nó, vì nó có thể chuyển mấy cái như "di chuyển" thành "$d_i$ chuyển".
+    <br/>
+    <script>new ClipboardJS('.btn');</script>
+    <button class="btn" id = "testclick" data-clipboard-target="#latex_output">Copy output</button>
     <br/>
     <textarea id="latex_input" rows="30" cols="90" oninput="myFunction()">
 Các bạn nên dùng cái này trước khi chỉnh sửa, với cả cẩn thận mấy cái dấu đô có sẵn nha :'(. Cứ gõ, paste vào đây là nó tự chuyển.
@@ -217,10 +234,10 @@ supported:
 1e9 -> 10^9
 2e18 -> 2 * 10^18
 x1 -> x_1 (advanced_mode)
-x2 -> x_2 (advanced_mode)
 xk -> x_k (advanced_mode)
 xi -> x_i (advanced_mode)
 xj -> x_j (advanced_mode)
+a[i] -> a_i (advanced_mode)
 xu -> xu (giữ nguyên trong advanced_mode)
 a ≤ b
 a &lt;= b
