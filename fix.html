@@ -53,8 +53,6 @@
             if (advanced_mode == true) {
                 data = data.replace(/([\( \n,\.:;])([a-zA-Z])([\dijk])([\) \n,\.:;])/g, '$1$$$2_$3$$$4')
                 data = data.replace(/(\w)\[([^\[]*?)\]/g, '$$$1_{$2}$$')
-                //do it again to catch pattern a[p[i]]
-                data = data.replace(/(\w)\[([^\[]*?)\]/g, '$$$1_{$2}$$')
             }
             // # add space after punctuation
             data = data.replace(/([,\?!;:])/g, '$1 ')
