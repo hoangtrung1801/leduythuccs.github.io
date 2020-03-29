@@ -52,7 +52,9 @@
             // xi -> x_i
             if (advanced_mode == true) {
                 data = data.replace(/([\( \n,\.:;])([a-zA-Z])([\dijk])([\) \n,\.:;])/g, '$1$$$2_$3$$$4')
-                data = data.replace(/(\w)\[(.+?)\]/g, '$$$1_{$2}$$')
+                data = data.replace(/(\w)\[([^\[]*?)\]/g, '$$$1_{$2}$$')
+                //do it again to catch pattern a[p[i]]
+                data = data.replace(/(\w)\[([^\[]*?)\]/g, '$$$1_{$2}$$')
             }
             // # add space after punctuation
             data = data.replace(/([,\?!;:])/g, '$1 ')
@@ -225,7 +227,7 @@
     Cẩn thận khi dùng nó, vì nó có thể chuyển mấy cái như "di chuyển" thành "$d_i$ chuyển".
     <br/>
     <script>new ClipboardJS('.btn');</script>
-    <button class="btn" id = "testclick" data-clipboard-target="#latex_output">Copy output</button>
+    <button class="btn" data-clipboard-target="#latex_output">Copy output</button>
     <br/>
     <textarea id="latex_input" rows="30" cols="90" oninput="myFunction()">
 Các bạn nên dùng cái này trước khi chỉnh sửa, với cả cẩn thận mấy cái dấu đô có sẵn nha :'(. Cứ gõ, paste vào đây là nó tự chuyển.
