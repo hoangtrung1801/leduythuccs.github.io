@@ -159,8 +159,8 @@
             // # replace A$[ -> $A[
             data = data.replace(/([a-zA-Z]+)\$([\[\(])/g,'$$$1$2')
             
-            // $, $ -> ,
-            data = data.replace(/\$, \$/g, ', ')
+            // // $, $ -> ,
+            // data = data.replace(/\$, \$/g, ', ')
             return data.trim();
         }
         function myFunction() {
