@@ -45,6 +45,7 @@
         }
         function fix_latex(data) {
             advanced_mode = document.getElementById("advanced_mode").checked;
+            item_mode = document.getElementById("item_mode").checked;
             data = ' ' + data + ' '
             data = data.normalize("NFKD")
             data = data.replace(/\r/g,'')
@@ -52,6 +53,8 @@
             // xi -> x_i
             if (advanced_mode == true) {
                 data = data.replace(/([\( \n,\.:;])([a-zA-Z])([\dijk])([\) \n,\.:;])/g, '$1$$$2_$3$$$4')
+                data = data.replace(/(\w)\[([^\[]*?)\]/g, '$$$1_{$2}$$')
+                //do it again to catch pattern a[p[i]]
                 data = data.replace(/(\w)\[([^\[]*?)\]/g, '$$$1_{$2}$$')
             }
             // # add space after punctuation
@@ -102,7 +105,7 @@
             data = data.replace(/\.\.\./g, ' \\dots ')
             data = data.replace(/\.\./g, ' \\dots ')
             data = data.replace(/\+/g, ' $$+$$ ')
-            data = data.replace(/-/g, ' $$-$$ ')
+            // data = data.replace(/-/g, ' $$-$$ ')
             
             
             // left = '[\(\) \n,\.:;]'
@@ -161,7 +164,15 @@
             
             // // $, $ -> ,
             // data = data.replace(/\$, \$/g, ', ')
-            return data.trim();
+
+            data = data.trim();
+            if (item_mode) {
+                data = data.replace(/\n\n/g, '\n')
+                data = data.replace(/\n\n/g, '\n')
+                data = data.replace(/\n/g, '\n\\item ')
+                data = "\\begin{itemize}\n\\item " + data + "\n\\end{itemize}"
+            }
+            return data
         }
         function myFunction() {
             let data = document.getElementById("latex_input").value;
@@ -169,6 +180,9 @@
             new_data = fix_latex(data)
             document.getElementById("latex_output").value = new_data;
             changed(data, new_data);
+        }
+        function clear_input() {
+            document.getElementById("latex_input").value = ""
         }
         function changed(old_data, new_data) {
             var diff = JsDiff.diffChars(old_data, new_data),
@@ -224,10 +238,12 @@
     Advanced Mode: <input type="checkbox" id="advanced_mode" onchange="myFunction()"> Nếu check, các pattern như xi, ai, vi, x[i], a[m] sẽ được đổi thành x_i, a_i, v_i, a_m, a_n </br>. 
     Cẩn thận khi dùng nó, vì nó có thể chuyển mấy cái như "di chuyển" thành "$d_i$ chuyển".
     <br/>
-    <script>new ClipboardJS('.btn');</script>
-    <button class="btn" data-clipboard-target="#latex_output">Copy output</button>
+    Item mode<input type = "checkbox" id="item_mode" onchange="myFunction()">
     <br/>
-    <textarea id="latex_input" rows="30" cols="90" oninput="myFunction()">
+    <script>new ClipboardJS('.btn');</script>
+    <button class="btn" onclick = "clear_input()" data-clipboard-target="#latex_output">Copy output</button>
+    <br/>
+    <textarea id="latex_input" rows="15" cols="90" oninput="myFunction()">
 Các bạn nên dùng cái này trước khi chỉnh sửa, với cả cẩn thận mấy cái dấu đô có sẵn nha :'(. Cứ gõ, paste vào đây là nó tự chuyển.
 supported:
 
@@ -249,7 +265,7 @@ Sau dấu câu ,phải có space
 Dòng thứ nhất ghi số N là số điểm có thể đặt góc lâu đài.( 1 ≤ N ≤ 5000 )
 
     N dòng sau ghi 2*N số nguyên là tọa độ N điểm có thể đặt góc lâu đài. ( Tọa độ của các điểm là các số nguyên có giá trị tuyệt đối nhỏ hơn 2^31 )</textarea>
-    <textarea id="latex_output" rows="30" cols="90"> </textarea>
+    <textarea id="latex_output" rows="15" cols="90"> </textarea>
     <br/>
     <button id = "katex_btn" onclick="katex_show()"> Click to view latex</button>
     <td><pre id="diff_output"></pre></td>
