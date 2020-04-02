@@ -131,7 +131,7 @@
             data = data.replace(/ +/g, ' ')
             // # replace $space$ to space
             data = data.replace(/\$ +\$( \W)/g, ' $1')
-            data = data.replace(/(\W |leq |neq |geq |times |le |ge )\$ +\$/g, '$1 ')
+            data = data.replace(/(\W |leq |neq |geq |times |le |ge |rightarrow |dots )\$ +\$/g, '$1 ')
             // # replce $ x $ to $x$
             data = data.replace(/\$\s+([^\$]+)\s+\$/g, '$$$1$$')
             // # add space after punctuation (again)
