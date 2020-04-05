@@ -110,6 +110,7 @@ var problems = {
     "BGMINE": "274766/T",
     "BGSTRING": "274766/U",
     "BGTRAVEL": "274766/V",
+    "BIC": "274707/T",
     "BIGNUM": "274710/A,274425/O",
     "BILL": "274766/W",
     "BINARY": "274425/P",
