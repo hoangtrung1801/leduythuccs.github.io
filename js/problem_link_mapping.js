@@ -70,7 +70,7 @@ var contest_name = {
     "268756": "VOI 2008 - practice version",
     "266262": "VOI 2007 - practice version",
     "266261": "VOI 2006 - practice version",
-    "26624": "VOI 2005 - practice version"
+    "266242": "VOI 2005 - practice version"
 }
 
 var problems = {
