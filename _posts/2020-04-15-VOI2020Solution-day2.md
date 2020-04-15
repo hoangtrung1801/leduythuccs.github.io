@@ -1,5 +1,6 @@
 ---
-published: false
+published: true
+title: 'Ngày 2 - Lời giải đề thi HSG quốc gia môn tin học năm 2020'
 layout: post
 date: '2020-04-15'
 tags:
