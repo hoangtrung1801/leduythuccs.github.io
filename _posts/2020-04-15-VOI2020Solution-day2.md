@@ -12,7 +12,18 @@ Solution ngày 1: [blog](/2020-02-23-VOI2020Solution-day1)
 
 Link nộp bài: [VOI2020](https://codeforces.com/group/FLVn1Sc504/contest/266446). Các bạn cần vào group: [VNOI - Vietnam Olympiad in Informatics](https://codeforces.com/group/FLVn1Sc504) ở codeforces trước nếu không vào được link contest.
 
-Với các bài, nếu đề quá dài mình sẽ tóm tắt lại đại ý trước khi đi vào lời giải. Mình sẽ chủ yếu đi vào lời giải cho sub cuối cùng, nhưng sẽ nói sơ qua các cách vét điểm.
+Với các bài, nếu đề quá dài mình sẽ tóm tắt lại đại ý trước khi đi vào lời giải. Mình sẽ chủ yếu đi vào lời giải cho sub cuối cùng, nhưng sẽ nói sơ qua các cách vét điểm. 
+
+- [Bài 4](#bài-4-light)
+  * [Tóm tắt đề bài](#tóm-tắt-đề-bài)
+  * [Lời giải](#lời-giải)
+- [Bài 5](bài-5-buildnig)
+  * [Tóm tắt đề bài](#tóm-tắt-đề-bài-1)
+  * [Lời giải](#lời-giải-1)
+- [Bài 6](#bài-6-equake)
+  * [Tóm tắt đề bài](#tóm-tắt-đề-bài-2)
+  * [Lời giải](#lời-giải-2)
+- [Nhận xét ngày 2](#nhận-xét-ngày-2)
 
 ## Bài 4: LIGHT
 
@@ -141,7 +152,7 @@ Bài này còn một cái yêu cầu là truy vết nữa, thật sự lúc code
 
 Code tham khảo: [EQUAKE.cpp](/data/VOI2020/EQUAKE.cpp)
 
-## Nhận xét chung ngày 2:
+## Nhận xét ngày 2:
 
 So với ngày 1 thì mình thấy ngày 2 có phần dễ nghĩ ra thuật hơn, ví như bài 5 mình thấy khi đọc vào rõ ràng là biết ta cần phải dựng đồ thị lên rồi làm cầu các thứ. Còn bài 6 đọc vào là biết phải làm knapsack trên cây rồi. Nhưng đề ngày 2 khó ở chỗ là khá nặng phần cài đặt cũng như cần nhiều kiến thức "lạ" (lạ ở đây là ít gặp ở VOI), như DP trên cây, sweep line (bài 5). Chung quy mình thấy ngày 1 khó hơn ngày 2. 
 
