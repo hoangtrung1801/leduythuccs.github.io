@@ -112,11 +112,11 @@ Code tham khảo: [BUILDING.cpp](/data/VOI2020/BUILDING.cpp)
 
 ### Tóm tắt đề bài:
 
-Có một cây gồm $$n$$ nút, có trọng số, trên mỗi nút $$u$$ có $$p_u$$ nhân viên, và có một xe có thể chở $$c$$ nhân viên trong 1 chuyến, $$c$$ là số cố định cho toàn bộ nút. Để chuyển $$x$$ nhân viên từ nút $$i$$ tới nút $$j$$ (kề nhau) thì tốn chi phí là $$\lceil \frac{c}{x} \rceil \times d(i, j)$$, với $$d(i, j)$$ là trọng số cạnh nối giữa $$i, j$$. Tính tổng chi phí bé nhất để di chuyển nhân viên sao cho lượng nhân viên chênh lệch giữa toàn bộ các nút là nhỏ nhất. 
+Có một cây gồm $$n$$ nút, có trọng số, trên mỗi nút $$u$$ có $$p_u$$ nhân viên, và có một xe có thể chở $$c$$ nhân viên trong 1 chuyến, $$c$$ là số cố định cho toàn bộ nút. Để chuyển $$x$$ nhân viên từ nút $$i$$ tới nút $$j$$ (kề nhau) thì tốn chi phí là $$\lceil \frac{x}{c} \rceil \times d(i, j)$$, với $$d(i, j)$$ là trọng số cạnh nối giữa $$i, j$$. Tính tổng chi phí bé nhất để di chuyển nhân viên sao cho lượng nhân viên chênh lệch giữa toàn bộ các nút là nhỏ nhất. 
 
 ### Lời giải:
 
-Tạm gọi $$S$$ là tổng số nhân viên trên toàn bộ nút, $$m = S % n$$
+Tạm gọi $$S$$ là tổng số nhân viên trên toàn bộ nút, $$m = S \% n$$
 Nhận xét:
 1. Nếu $$m=0$$ thì ở kết quả, toàn bộ nút có lượng nhân viên bằng nhau.
 2. Ngược lại thì có $$m$$ nút có số lượng nhân viên là $$HI = \lfloor \frac{S}{n} \rfloor + 1$$, các nút còn lại có số lượng nhân viên là $$LOW = \lfloor \frac{S}{n} \rfloor$$
