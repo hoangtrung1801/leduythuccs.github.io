@@ -10,9 +10,9 @@ Solution ngày 1: [blog](/2020-02-23-VOI2020Solution-day1)
 
 Đề thi ngày 2: [PDF](/data/VOI2020/VOI2020_day_2.pdf)
 
-Link nộp bài: [VOI2020](https://codeforces.com/group/FLVn1Sc504/contest/266446). Các bạn cần vào group: [VNOI - Vietnam Olympiad in Informatics](https://codeforces.com/group/FLVn1Sc504) ở codeforces trước nếu không vào được link contest.
+Link nộp bài: [VOI2020](https://codeforces.com/group/FLVn1Sc504/contest/266446). Các bạn cần vào group: [VNOI - Vietnam Olympiad in Informatics](https://codeforces.com/group/FLVn1Sc504) ở codeforces trước nếu không vào được link contest. 
 
-Với các bài, nếu đề quá dài mình sẽ tóm tắt lại đại ý trước khi đi vào lời giải. Mình sẽ chủ yếu đi vào lời giải cho sub cuối cùng, nhưng sẽ nói sơ qua các cách vét điểm. 
+Với các bài, nếu đề quá dài mình sẽ tóm tắt lại đại ý trước khi đi vào lời giải. Mình sẽ chủ yếu đi vào lời giải cho sub cuối cùng, nhưng sẽ nói sơ qua các cách vét điểm. Nếu các bạn có thắc mắc gì thì có thể comment vào [post này](https://www.facebook.com/leduy.khongngu/posts/2587815004810445) hoặc nhắn tin cho mình. 
 
 - [Bài 4](#bài-4-light)
   * [Tóm tắt đề bài](#tóm-tắt-đề-bài)
