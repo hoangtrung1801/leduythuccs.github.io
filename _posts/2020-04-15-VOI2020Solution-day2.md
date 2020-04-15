@@ -63,15 +63,16 @@ Code tham khảo: [LIGHT.cpp](/data/VOI2020/LIGHT.cpp)
 
 ### Tóm tắt đề bài:
 
-Có một số hình chữ nhật trong mặt phẳng tọa độ $$Oxy$$, các hình chữ nhật có thể chạm vào nhau nhưng không đè lên nhau. Ta tạo một đồ thị vô hướng, với các đỉnh là các hình chữ nhật, 2 đỉnh có cạnh nối khi và chỉ khi 2 hình chữ nhật tương ứng chạm nhau. Trong đồ thị mới có thể có một số cầu, khi xóa cây cầu đó đi thì một thành phần liên thông sẽ bị tách ra làm 2, gọi số lượng đỉnh 2 bên lần lượt là $$A$$ và $$B$$, ta cần tìm giá trị $$|A-B|$$ nhỏ nhất. 
+Có một số hình chữ nhật trong mặt phẳng tọa độ $$Oxy$$, các hình chữ nhật có thể chạm vào nhau nhưng không đè lên nhau. Ta tạo một đồ thị vô hướng, với các đỉnh là các hình chữ nhật, 2 đỉnh có cạnh nối khi và chỉ khi 2 hình chữ nhật tương ứng chạm nhau. Trong đồ thị mới có thể có một số cầu, khi xóa cây cầu đó đi thì một thành phần liên thông sẽ bị tách ra làm 2, gọi số lượng đỉnh 2 bên lần lượt là $$A$$ và $$B$$, ta cần tìm giá trị $$\|A-B\|$$ nhỏ nhất. 
 
 ### Lời giải:
 
-Bài này phần khó nhất là việc dựng đồ thị lên, còn việc tìm $$|A-B|$$ nhỏ nhất là bài khá cơ bản rồi. Các bạn có thể làm bài [REFORM](https://codeforces.com/group/FLVn1Sc504/contest/274830/problem/O) ở group [VNOI - Vietnam Olympiad in Informatics](https://codeforces.com/group/FLVn1Sc504) để rõ hơn cái kỹ thuật này. Nên ở mỗi subtask mình sẽ chú ý vào việc dự đồ thị hơn.
+Bài này phần khó nhất là việc dựng đồ thị lên, còn việc tìm $$\|A-B\|$$ nhỏ nhất là bài khá cơ bản rồi. Các bạn có thể làm bài [REFORM](https://codeforces.com/group/FLVn1Sc504/contest/274830/problem/O) ở group [VNOI - Vietnam Olympiad in Informatics](https://codeforces.com/group/FLVn1Sc504) để rõ hơn cái kỹ thuật này. Nên ở mỗi subtask mình sẽ chú ý vào việc dự đồ thị hơn.
 
 Các nhận xét trước khi làm bài:
 1. Đồ thị trong bài là đồ thị phẳng, nên số lượng cạnh không quá $$3\times n$$, đọc thêm về đồ thị phẳng ở [đây](https://en.wikipedia.org/wiki/Planar_graph)
 2. Một điểm thì có nhiều nhất 4 hình chữ nhật chứa có.
+
 #### Subtask 1: $$n \leq 10^3$$
 
 Ở subtask này ta có thể duyệt qua mọi cặp hình chữ nhật rồi xem nó có kề nhau hay không.
@@ -90,7 +91,7 @@ Bài toán trên thì có thể giải đơn giản bằng sweep line và set (�
 
 Quay về bài toán gốc, thì thật sự nó cũng giống như bài toán mình vừa nói, mỗi hình chữ nhật bạn có thể xem nó như là 4 đoạn thẳng, tổng cộng có $$n \times 4$$ đoạn thẳng. Ta xét các đoạn thẳng có cùng tọa độ $$x$$ (hoặc $$y$$) rồi tìm những cặp đoạn thẳng có điểm chung. Ta không sợ số cặp có điểm chung lớn, vì số cạnh thật sự của đồ thị không vượt quá $$3 \times n$$
 
-Độ phức tạp của việc dựng đồ thị là $$O(nlogn)$$ (mất log cho phần sort các tọa độ tăng dần), độ phức tạp của phần tìm $$|A-B|$$ là $$O(n)$$.
+Độ phức tạp của việc dựng đồ thị là $$O(nlogn)$$ (mất log cho phần sort các tọa độ tăng dần), độ phức tạp của phần tìm $$\|A-B\|$$ là $$O(n)$$.
 
 Code tham khảo: [BUILDING.cpp](/data/VOI2020/BUILDING.cpp)
 
@@ -99,6 +100,12 @@ Code tham khảo: [BUILDING.cpp](/data/VOI2020/BUILDING.cpp)
 - Tag: DP on tree
 
 ### Tóm tắt đề bài:
-Có một cây gồm $$n$$ nút, có trọng số, trên mỗi nút $$u$$ có $$p_u$$ nhân viên, và có một xe có thể chở $$c$$ nhân viên trong 1 chuyến, $$c$$ là số cố định cho toàn bộ nút. Để chuyển $$x$$ nhân viên từ nút $$i$$ tới nút $$j$$ (kề nhau) thì tối chi phí là $$\lceil x \rceil$$
+
+Có một cây gồm $$n$$ nút, có trọng số, trên mỗi nút $$u$$ có $$p_u$$ nhân viên, và có một xe có thể chở $$c$$ nhân viên trong 1 chuyến, $$c$$ là số cố định cho toàn bộ nút. Để chuyển $$x$$ nhân viên từ nút $$i$$ tới nút $$j$$ (kề nhau) thì tốn chi phí là $$\lceil \frac{c}{x} \rceil \times d(i, j)$$, với $$d(i, j)$$ là trọng số cạnh nối giữa $$i, j$$. Tính tổng trọng số bé nhất để lượng nhân viên chênh lệch giữa toàn bộ các nút là nhỏ nhất. 
+
 ### Lời giải:
+Tạm gọi $$S$$ là tổng số nhân viên trên toàn bộ nút, $$m = S % n$$
+Nhận xét:
+1. Nếu $$m=0$$ thì ở kết quả, toàn bộ nút có lượng nhân viên bằng nhau.
+2. Ngược lại thì có $$m$$ nút có số lượng nhân viên là $$\lfloor \frac{S}{n} \rfloor + 1$$, các nút còn lại có số lượng nhân viên là $$\lfloor \frac{S}{n} \rfloor$$
 Code tham khảo: [EQUAKE.cpp](/data/VOI2020/EQUAKE.cpp)
