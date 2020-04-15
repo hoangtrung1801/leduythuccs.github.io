@@ -101,11 +101,48 @@ Code tham khảo: [BUILDING.cpp](/data/VOI2020/BUILDING.cpp)
 
 ### Tóm tắt đề bài:
 
-Có một cây gồm $$n$$ nút, có trọng số, trên mỗi nút $$u$$ có $$p_u$$ nhân viên, và có một xe có thể chở $$c$$ nhân viên trong 1 chuyến, $$c$$ là số cố định cho toàn bộ nút. Để chuyển $$x$$ nhân viên từ nút $$i$$ tới nút $$j$$ (kề nhau) thì tốn chi phí là $$\lceil \frac{c}{x} \rceil \times d(i, j)$$, với $$d(i, j)$$ là trọng số cạnh nối giữa $$i, j$$. Tính tổng trọng số bé nhất để lượng nhân viên chênh lệch giữa toàn bộ các nút là nhỏ nhất. 
+Có một cây gồm $$n$$ nút, có trọng số, trên mỗi nút $$u$$ có $$p_u$$ nhân viên, và có một xe có thể chở $$c$$ nhân viên trong 1 chuyến, $$c$$ là số cố định cho toàn bộ nút. Để chuyển $$x$$ nhân viên từ nút $$i$$ tới nút $$j$$ (kề nhau) thì tốn chi phí là $$\lceil \frac{c}{x} \rceil \times d(i, j)$$, với $$d(i, j)$$ là trọng số cạnh nối giữa $$i, j$$. Tính tổng chi phí bé nhất để di chuyển nhân viên sao cho lượng nhân viên chênh lệch giữa toàn bộ các nút là nhỏ nhất. 
 
 ### Lời giải:
+
 Tạm gọi $$S$$ là tổng số nhân viên trên toàn bộ nút, $$m = S % n$$
 Nhận xét:
 1. Nếu $$m=0$$ thì ở kết quả, toàn bộ nút có lượng nhân viên bằng nhau.
-2. Ngược lại thì có $$m$$ nút có số lượng nhân viên là $$\lfloor \frac{S}{n} \rfloor + 1$$, các nút còn lại có số lượng nhân viên là $$\lfloor \frac{S}{n} \rfloor$$
+2. Ngược lại thì có $$m$$ nút có số lượng nhân viên là $$hi = \lfloor \frac{S}{n} \rfloor + 1$$, các nút còn lại có số lượng nhân viên là $$low = \lfloor \frac{S}{n} \rfloor$$
+
+#### Subtask 1: $$n = 3$$
+
+Với $$n=3$$ thì chỉ là xét linh tinh xem mỗi nút có bao nhiêu nhân viên thôi :v 
+
+#### Subtask 2: $$n <= 3000$$, cây có dạng đường thẳng
+
+Cho đơn giản thì ta xem cây nối với nhau theo $$1-2-3-4-...-n$$
+
+Xét trường hợp $$m=0$$ (mọi nút có cùng lượng nhân viên ở kết quả cuối cùng). Xem như ta đứng ở nút 1, và ta bị thiếu nhân viên, rõ ràng ta cần phải lấy nhân viên ở nút 2. Ngược lại nếu ta dư nhân viên thì ta cần đẩy lượng nhân viên đó sang nút 2. Tương tự khi ta xét tới nút 2, lúc này nút 1 chắc chắn đã đủ nhân viên rồi, ta xét tương tự thì cũng sẽ biết được nút 2 cần lấy hay đưa nhân viên tới nút 3, ... 
+
+Nhưng nếu $$m \neq 0$$, thì ta còn phải xác định được nút nào cần có nhiều nhân viên hơn nút còn lại. Tới đây thì ta dùng quy hoạch động: 
+
+- Gọi $$F(u, i)$$ là tổng chi phí bé nhất để di chuyển nhân viên sao cho trong các nút từ 1 tới $$u$$ đã có $$i$$ nút có $$hi$$ nhân viên. Lúc này kết quả là $$F(n, m)$$.
+- Việc chuyển trạng thái thì cũng khá đơn giản, ở nút $$u$$ ta chỉ có 2 option là:
+1. Hoặc nút $$u + 1$$ có $$hi$$ nhân viên: chuyển qua trạng thái $$F(u + 1, i + 1)$$
+2. Hoặc nút $$u + 1$$ có $$low$$ nhân viên: chuyển qua trạng thái $$F(u + 1, i)$$. 
+
+Việc tính chi phí chuyển thì do ta biết đượng số lượng nhân viên cần thiết của trạng thái $$F(u, i)$$ (chính bằng $$u * low + i$$), nên ta biết được là ở đó đang dư hay thiếu nhân viên, từ đó biết là tối chi phí di chuyển như thế nào. 
+
+Độ phức tạp là $$O(n \times m) = O(n^2)$$
+
+#### Subtask 3: $$n <= 3000$$
+
+Subtask này thì từ subtask 2 ta có thể chuyển nó thành DP trên cây (mọi người hay gọi là Knapsack on tree).  $$F(u, i)$$ là tổng chi phí bé nhất để di chuyển nhân viên sao cho trong các nút ở cây con gốc $$u$$ thì có $$i$$ nút có $$hi$$ nhân viên. Tạm xem gốc của cây là 1 thì kết quả là $$F(1, m)$$.
+
+Việc tính $$F$$ thì nó đơn thuần là knapsack rồi, nhưng khó ở chỗ là nếu làm không khéo thì chỗ DP nó sẽ là $$O(n^3)$$, các bạn có thểm tham khảo link [này](https://codeforces.com/blog/entry/52742?#comment-367974) để tham khảo cách làm $$O(n^2)$$. 
+
+Bài này còn một cái yêu cầu là truy vết nữa, thật sự lúc code bài này mình code chưa tới 30p là xong phần tính kết quả rồi, còn phần truy vết mình làm mãi luôn tại mình ngu :v. Các bạn nên làm bài [PTREE](https://codeforces.com/group/FLVn1Sc504/contest/274518/problem/E) trước để xem cách truy vết knapsack trên cây nhé. 
+
 Code tham khảo: [EQUAKE.cpp](/data/VOI2020/EQUAKE.cpp)
+
+## Nhận xét chung ngày 2:
+
+So với ngày 1 thì mình thấy ngày 2 có phần dễ nghĩ ra thuật hơn, ví như bài 5 mình thấy khi đọc vào rõ ràng là biết ta cần phải dựng đồ thị lên rồi làm cầu các thứ. Còn bài 6 đọc vào là biết phải làm knapsack trên cây rồi. Nhưng đề ngày 2 khó ở chỗ là khá nặng phần cài đặt cũng như cần nhiều kiến thức "lạ" (lạ ở đây là ít gặp ở VOI), như DP trên cây, sweep line (bài 5). Chung quy mình thấy ngày 1 khó hơn ngày 2. 
+
+Có một sự thật là lúc làm VNOI Online 2020, tụi mình đã định cho một bài DP knapsack trên cây, cũng dùng cái kỹ thuật giảm xuống $$O(n^2)$$ luôn, nói chung cài đặt y chang bài 6, nhưng bọn mình để nó ở bài 4. Rồi sau đó vì 1 số lý do mà không dùng bài đó nữa. Tiếc thật sự :v. 
