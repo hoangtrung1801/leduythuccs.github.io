@@ -1,15 +1,16 @@
 ---
 published: true
-title: 'Ngày 2 - Lời giải đề thi HSG quốc gia môn tin học năm 2020'
+title: Ngày 2 - Lời giải đề thi HSG quốc gia môn tin học năm 2020
 layout: post
 date: '2020-04-15'
 tags:
   - CS
 ---
 Solution ngày 1: [blog](/2020-02-23-VOI2020Solution-day1)
+
 Đề thi ngày 2: [PDF](/data/VOI2020/VOI2020_day_2.pdf)
 
-Link nộp bài: [VOI2020](https://codeforces.com/group/FLVn1Sc504/contest/266446). Các bạn cần vào group: [Vietnamese Competitive Programmers](https://codeforces.com/group/FLVn1Sc504) trước nếu không vào được link contest.
+Link nộp bài: [VOI2020](https://codeforces.com/group/FLVn1Sc504/contest/266446). Các bạn cần vào group: [VNOI - Vietnam Olympiad in Informatics](https://codeforces.com/group/FLVn1Sc504) ở codeforces trước nếu không vào được link contest.
 
 Với các bài, nếu đề quá dài mình sẽ tóm tắt lại đại ý trước khi đi vào lời giải. Mình sẽ chủ yếu đi vào lời giải cho sub cuối cùng, nhưng sẽ nói sơ qua các cách vét điểm.
 
@@ -37,7 +38,7 @@ Hãy xem xét cách biến đổi toàn bộ bảng về một giá trị $$t$$.
 
 Xét ô $$(1, 1)$$, rõ ràng duy nhất chỉ có nhiều nhất một nút bấm ảnh hưởng tới nó, vậy nếu ô $$(1, 1)$$ mà khác giá trị $$t$$, rõ ràng ta cần phải bấm (và ta biết chính xác là cần phải bấm bao nhiêu lần), còn nếu không có nút bấm thì rõ ràng không thể biến toàn bộ bảng về giá trị $$t$$. Điều này thực hiện được là nhờ điều kiện tất cả $$(r_i, c_i)$$ của mọi truy vấn là phân biệt (nếu không có điều kiện đó thì mình cũng không biết bài này làm thế nào). 
 
-Sau khi bấm xong ở ô $$(1, 1)$$ thì ta xem như là xóa nó đi, tương tự sang ô $$(1, 2)$$ cũng chỉ có nhiều nhất 1 nút bấm ảnh hưởng tới nó. Tiếp tục quy nạp tiếp tục thì ta sẽ xét được hết bảng.
+Sau khi bấm xong ở ô $$(1, 1)$$ thì ta xem như là xóa nó đi, tương tự sang ô $$(1, 2)$$ cũng chỉ có nhiều nhất 1 nút bấm ảnh hưởng tới nó. Tiếp tục quy nạp thì ta sẽ xét được hết bảng.
 
 Do giới hạn nhỏ, nên mỗi lần bấm nút ta có thể thực hiện duyệt qua toàn bộ ô được ảnh hưởng bởi nút bấm đó và điều chỉnh lại giá trị.
 
@@ -58,12 +59,38 @@ Code tham khảo: [LIGHT.cpp](/data/VOI2020/LIGHT.cpp)
 
 ## Bài 5: BUILDING
 
-- Tag: Sweep line, cạnh cầu.
+- Tag: Graph, sweep line
 
 ### Tóm tắt đề bài:
 
+Có một số hình chữ nhật trong mặt phẳng tọa độ $$Oxy$$, các hình chữ nhật có thể chạm vào nhau nhưng không đè lên nhau. Ta tạo một đồ thị vô hướng, với các đỉnh là các hình chữ nhật, 2 đỉnh có cạnh nối khi và chỉ khi 2 hình chữ nhật tương ứng chạm nhau. Trong đồ thị mới có thể có một số cầu, khi xóa cây cầu đó đi thì một thành phần liên thông sẽ bị tách ra làm 2, gọi số lượng đỉnh 2 bên lần lượt là $$A$$ và $$B$$, ta cần tìm giá trị $$|A-B|$$ nhỏ nhất. 
 
 ### Lời giải:
+
+Bài này phần khó nhất là việc dựng đồ thị lên, còn việc tìm $$|A-B|$$ nhỏ nhất là bài khá cơ bản rồi. Các bạn có thể làm bài [REFORM](https://codeforces.com/group/FLVn1Sc504/contest/274830/problem/O) ở group [VNOI - Vietnam Olympiad in Informatics](https://codeforces.com/group/FLVn1Sc504) để rõ hơn cái kỹ thuật này. Nên ở mỗi subtask mình sẽ chú ý vào việc dự đồ thị hơn.
+
+Các nhận xét trước khi làm bài:
+1. Đồ thị trong bài là đồ thị phẳng, nên số lượng cạnh không quá $$3\times n$$, đọc thêm về đồ thị phẳng ở [đây](https://en.wikipedia.org/wiki/Planar_graph)
+2. Một điểm thì có nhiều nhất 4 hình chữ nhật chứa có.
+#### Subtask 1: $$n \leq 10^3$$
+
+Ở subtask này ta có thể duyệt qua mọi cặp hình chữ nhật rồi xem nó có kề nhau hay không.
+
+#### Subtask 2: $$n \leq 10^5$$, các tọa độ không vượt quá $$10^3$$
+
+Ở subtask này, do tọa độ không hề lớn, nên với mỗi tọa độ ta có thể biết được những hình chữ nhật nào chứa điểm này, từ đó dựng cạnh. Ta có thể áp dụng kỹ thuật tổng 2D giống bài 4, nhưng ở đây thay vì tổng thì là một set các điểm. 
+
+#### Subtask 3: $$n \leq 10^5$$, các tọa độ không vượt quá $$10^9$$
+
+Ta xét một bài toán đơn giản hơn: có $$n$$ đoạn thẳng trên trục $$Ox$$, hãy in ra các cặp đoạn thẳng có điểm chung. 
+
+Bài toán trên thì có thể giải đơn giản bằng sweep line và set (đừng sợ chữ "sweep line", nó thật ra chỉ là duyệt qua các tọa độ tăng dần thôi :v): 
+1. Tách các đoạn thẳng làm 2 đầu, tạm gọi là đầu mở và đóng.
+2. Duyệt các tọa độ tăng dần, nếu ta gặp đầu mở, ta ném nó vào set. Nếu ta gặp đầu đóng, rõ ràng đầu này sẽ có điểm chung với toàn bộ các đầu mở đang nằm trong set, vậy nên ta in các cặp đó ra, và xóa đầu đóng tương ứng.
+
+Quay về bài toán gốc, thì thật sự nó cũng giống như bài toán mình vừa nói, mỗi hình chữ nhật bạn có thể xem nó như là 4 đoạn thẳng, tổng cộng có $$n \times 4$$ đoạn thẳng. Ta xét các đoạn thẳng có cùng tọa độ $$x$$ (hoặc $$y$$) rồi tìm những cặp đoạn thẳng có điểm chung. Ta không sợ số cặp có điểm chung lớn, vì số cạnh thật sự của đồ thị không vượt quá $$3 \times n$$
+
+Độ phức tạp của việc dựng đồ thị là $$O(nlogn)$$ (mất log cho phần sort các tọa độ tăng dần), độ phức tạp của phần tìm $$|A-B|$$ là $$O(n)$$.
 
 Code tham khảo: [BUILDING.cpp](/data/VOI2020/BUILDING.cpp)
 
@@ -71,5 +98,7 @@ Code tham khảo: [BUILDING.cpp](/data/VOI2020/BUILDING.cpp)
 
 - Tag: DP on tree
 
+### Tóm tắt đề bài:
+Có một cây gồm $$n$$ nút, có trọng số, trên mỗi nút $$u$$ có $$p_u$$ nhân viên, và có một xe có thể chở $$c$$ nhân viên trong 1 chuyến, $$c$$ là số cố định cho toàn bộ nút. Để chuyển $$x$$ nhân viên từ nút $$i$$ tới nút $$j$$ (kề nhau) thì tối chi phí là $$\lceil x \rceil$$
 ### Lời giải:
 Code tham khảo: [EQUAKE.cpp](/data/VOI2020/EQUAKE.cpp)
