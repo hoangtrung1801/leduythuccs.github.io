@@ -108,13 +108,13 @@ Có một cây gồm $$n$$ nút, có trọng số, trên mỗi nút $$u$$ có $$
 Tạm gọi $$S$$ là tổng số nhân viên trên toàn bộ nút, $$m = S % n$$
 Nhận xét:
 1. Nếu $$m=0$$ thì ở kết quả, toàn bộ nút có lượng nhân viên bằng nhau.
-2. Ngược lại thì có $$m$$ nút có số lượng nhân viên là $$hi = \lfloor \frac{S}{n} \rfloor + 1$$, các nút còn lại có số lượng nhân viên là $$low = \lfloor \frac{S}{n} \rfloor$$
+2. Ngược lại thì có $$m$$ nút có số lượng nhân viên là $$HI = \lfloor \frac{S}{n} \rfloor + 1$$, các nút còn lại có số lượng nhân viên là $$LOW = \lfloor \frac{S}{n} \rfloor$$
 
 #### Subtask 1: $$n = 3$$
 
 Với $$n=3$$ thì chỉ là xét linh tinh xem mỗi nút có bao nhiêu nhân viên thôi :v 
 
-#### Subtask 2: $$n <= 3000$$, cây có dạng đường thẳng
+#### Subtask 2: $$n \leq 3000$$, cây có dạng đường thẳng
 
 Cho đơn giản thì ta xem cây nối với nhau theo $$1-2-3-4-...-n$$
 
@@ -122,18 +122,18 @@ Xét trường hợp $$m=0$$ (mọi nút có cùng lượng nhân viên ở kế
 
 Nhưng nếu $$m \neq 0$$, thì ta còn phải xác định được nút nào cần có nhiều nhân viên hơn nút còn lại. Tới đây thì ta dùng quy hoạch động: 
 
-- Gọi $$F(u, i)$$ là tổng chi phí bé nhất để di chuyển nhân viên sao cho trong các nút từ 1 tới $$u$$ đã có $$i$$ nút có $$hi$$ nhân viên. Lúc này kết quả là $$F(n, m)$$.
+- Gọi $$F(u, i)$$ là tổng chi phí bé nhất để di chuyển nhân viên sao cho trong các nút từ 1 tới $$u$$ đã có $$i$$ nút có $$HI$$ nhân viên. Lúc này kết quả là $$F(n, m)$$.
 - Việc chuyển trạng thái thì cũng khá đơn giản, ở nút $$u$$ ta chỉ có 2 option là:
-1. Hoặc nút $$u + 1$$ có $$hi$$ nhân viên: chuyển qua trạng thái $$F(u + 1, i + 1)$$
-2. Hoặc nút $$u + 1$$ có $$low$$ nhân viên: chuyển qua trạng thái $$F(u + 1, i)$$. 
+1. Hoặc nút $$u + 1$$ có $$HI$$ nhân viên: chuyển qua trạng thái $$F(u + 1, i + 1)$$
+2. Hoặc nút $$u + 1$$ có $$LOW$$ nhân viên: chuyển qua trạng thái $$F(u + 1, i)$$. 
 
-Việc tính chi phí chuyển thì do ta biết đượng số lượng nhân viên cần thiết của trạng thái $$F(u, i)$$ (chính bằng $$u * low + i$$), nên ta biết được là ở đó đang dư hay thiếu nhân viên, từ đó biết là tối chi phí di chuyển như thế nào. 
+Việc tính chi phí chuyển thì do ta biết đượng số lượng nhân viên cần thiết của trạng thái $$F(u, i)$$ (chính bằng $$u * LOW + i$$), nên ta biết được là ở đó đang dư hay thiếu nhân viên, từ đó biết là tối chi phí di chuyển như thế nào. 
 
 Độ phức tạp là $$O(n \times m) = O(n^2)$$
 
-#### Subtask 3: $$n <= 3000$$
+#### Subtask 3: $$n \leq 3000$$
 
-Subtask này thì từ subtask 2 ta có thể chuyển nó thành DP trên cây (mọi người hay gọi là Knapsack on tree).  $$F(u, i)$$ là tổng chi phí bé nhất để di chuyển nhân viên sao cho trong các nút ở cây con gốc $$u$$ thì có $$i$$ nút có $$hi$$ nhân viên. Tạm xem gốc của cây là 1 thì kết quả là $$F(1, m)$$.
+Subtask này thì từ subtask 2 ta có thể chuyển nó thành DP trên cây (mọi người hay gọi là Knapsack on tree).  $$F(u, i)$$ là tổng chi phí bé nhất để di chuyển nhân viên sao cho trong các nút ở cây con gốc $$u$$ thì có $$i$$ nút có $$HI$$ nhân viên. Tạm xem gốc của cây là 1 thì kết quả là $$F(1, m)$$.
 
 Việc tính $$F$$ thì nó đơn thuần là knapsack rồi, nhưng khó ở chỗ là nếu làm không khéo thì chỗ DP nó sẽ là $$O(n^3)$$, các bạn có thểm tham khảo link [này](https://codeforces.com/blog/entry/52742?#comment-367974) để tham khảo cách làm $$O(n^2)$$. 
 
