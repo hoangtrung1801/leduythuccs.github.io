@@ -1,14 +1,14 @@
 ---
 layout: post
 published: true
-title: 'Ngày 1 - Lời giải đề thi HSG quốc gia môn tin học năm 2020 '
+title: 'Ngày 1 - Lời giải đề thi HSG quốc gia môn tin học năm 2020'
 date: '2020-02-23'
 tags:
   - CS
 ---
 Đề thi ngày 1: [PDF](/data/VOI2020/VOI2020_day_1.pdf).
 
-Link nộp bài: [VOI2020](https://codeforces.com/group/FLVn1Sc504/contest/266446). Các bạn cần vào group: [Vietnamese Competitive Programmers](https://codeforces.com/group/FLVn1Sc504) trước nếu không vào được link contest.
+Link nộp bài: [VOI2020](https://codeforces.com/group/FLVn1Sc504/contest/266446). Các bạn cần vào group: [VNOI - Vietnam Olympiad in Informatics](https://codeforces.com/group/FLVn1Sc504) ở codeforces trước nếu không vào được link contest.
 
 Với các bài, nếu đề quá dài mình sẽ tóm tắt lại đại ý trước khi đi vào lời giải. Mình sẽ chủ yếu đi vào lời giải cho sub cuối cùng, nhưng sẽ nói sơ qua các cách vét điểm.
 
