@@ -78,7 +78,10 @@ def convert_to_json():
     handle_info = {}
     for id, handle, junk in user_table:
         handle_info[str(id)] = handle
-
+    f = open('leduythuccs.github.io/data/tagging/rank_text.txt', 'w')
+    for x in rank_info:
+        f.write(f"{x} {rank_info[x]}\n")
+    f.close()
     rank_info = unicodedata.normalize('NFC', json.dumps(rank_info).replace("\'", "\\\'")).replace('\"', '\\\"').replace('\\u001d', '')
     handle_info = unicodedata.normalize('NFC', json.dumps(handle_info).replace("\'", "\\\'")).replace('\"', '\\\"').replace('\\u001d', '')
     tags_info = unicodedata.normalize('NFC', json.dumps(tags_info).replace("\'", "\\\'")).replace('\"', '\\\"').replace('\\u001d', '')
