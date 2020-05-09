@@ -28,6 +28,7 @@
             }
             output.appendChild(list)
             myFunction()
+            tagFunction()
         }
         function myFunction() {
             var tag = document.getElementById("input").value.toLowerCase();
@@ -51,7 +52,6 @@
                         node.href = link
                         node.innerText = problem
                         node.target = "_blank"
-                        console.log(node)
                         item.appendChild(node)
                         item.appendChild(document.createTextNode(". Người tag: " + handle_info[discord_id.toString()]))
                         if (problems_info[problem][discord_id]['tags'].length > 0) {
@@ -70,7 +70,67 @@
             }
             output.appendChild(list)
         }
-        
+        function parse_link(link) {
+            p1 = /problemset\/problem\/(\d+)\/(\w+)/
+            p2 = /contest\/(\d+)\/problem\/(\w+)/
+            p3 = /(\d+)([A-Z]+[0-9]*)/
+            if (link.match(p1) != null)
+                return link.match(p1)[1] + '/' + link.match(p1)[2] 
+            if (link.match(p2) != null)
+                return link.match(p2)[1] + '/' + link.match(p2)[2] 
+            if (link.match(p3) != null)
+                return link.match(p3)[1] + '/' + link.match(p3)[2] 
+            return null
+        }
+        function tagFunction() {
+            var link = document.getElementById("tag_input").value;
+            output = document.getElementById("tag_output");
+            output.textContent = "";
+            problem = parse_link(link)
+            if (problem == null) {
+                output.textContent = "Link không hợp lệ";
+                return;
+            }
+            contest = problem.split('/')
+            contest_id = contest[0]
+            problem_char = contest[1]
+            link = `https://codeforces.com/contest/${contest_id}/problem/${problem_char}`
+            if (!(problem in problems_info)) {
+                output.textContent = "Không tìm thấy tag của bài ";
+                node = document.createElement("a")
+                node.href = link
+                node.innerText = problem
+                node.target = "_blank"
+                output.appendChild(node)
+                return;
+            } 
+            list = document.createElement('ul')
+            node = document.createElement("a")
+            
+            node.href = link
+            node.innerText = problem
+            node.target = "_blank"
+            output.innerHTML = "Tag của bài "
+            output.appendChild(node)
+            output.innerHTML += ":"
+            for (var discord_id in problems_info[problem]) { 
+                link = `https://codeforces.com/contest/${contest_id}/problem/${problem_char}`
+                item = document.createElement('li')
+                item.appendChild(document.createTextNode("Người tag: " + handle_info[discord_id.toString()]))
+                if (problems_info[problem][discord_id]['tags'].length > 0) {
+                    node = document.createTextNode("Tags: " + problems_info[problem][discord_id]['tags'].join(', '))
+                    item.appendChild(document.createElement("br"))
+                    item.appendChild(node)
+                }
+                if (problems_info[problem][discord_id]['comments'].length > 0) {
+                    item.appendChild(document.createElement("br"))
+                    node = document.createTextNode("Comments: " + problems_info[problem][discord_id]['comments'].join(', '))
+                    item.appendChild(node)
+                }
+                list.appendChild(item)
+            }
+            output.appendChild(list)
+        }
 
     </script>
 </head>
@@ -81,12 +141,17 @@
         Trang web được cập nhật lần cuối lúc 19h55 (UTC+7) 05.05.2020
         Nhập tag vào ô ở dưới 
     </p>
-    <div style="float:left;width:calc(50% - 5px);" >
+    <div style="float:left;width:calc(30% - 5px);" >
         <input id= "input" oninput="myFunction()" value = "trie"  >  </input>
         <div id = "output"> 
         </div>
     </div>
-    <div id = "rank" style="float:right;width:calc(50% - 5px)"> 
+    <div id = "tag" style="float:left;width:calc(30% - 5px)"> 
+        <input id= "tag_input" oninput="tagFunction()" value = "888G"  >  </input>
+        <div id = "tag_output"> 
+        </div>
+    </div>
+    <div id = "rank" style="float:left;width:calc(30% - 5px)"> 
         <p>ahihi</p>
     </div>
     <!-- <p>
