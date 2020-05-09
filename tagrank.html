@@ -29,6 +29,20 @@
             output.appendChild(list)
             myFunction()
             tagFunction()
+            output = document.getElementById("all_problem");
+            output.textContent = "";
+            for (var problem in problems_info) {
+                contest = problem.split('/')
+                contest_id = contest[0]
+                problem_char = contest[1]
+                link = `https://codeforces.com/contest/${contest_id}/problem/${problem_char}`
+                node = document.createElement("a")
+                node.href = link
+                node.innerText = problem
+                node.target = "_blank"
+                output.appendChild(node)
+                output.appendChild(document.createElement("br"))
+            }
         }
         function myFunction() {
             var tag = document.getElementById("input").value.toLowerCase();
@@ -138,7 +152,7 @@
 <body onload="init()">
     
     <p>
-        Trang web được cập nhật lần cuối lúc 19h55 (UTC+7) 05.05.2020
+        Trang web được cập nhật lần cuối lúc 19h55 (UTC+7) 05.05.2020 </br>
         Nhập tag vào ô ở dưới 
     </p>
     <div style="float:left;width:calc(30% - 5px);" >
@@ -149,6 +163,8 @@
     <div id = "tag" style="float:left;width:calc(30% - 5px)"> 
         <input id= "tag_input" oninput="tagFunction()" value = "888G"  >  </input>
         <div id = "tag_output"> 
+        </div>
+        <div id = "all_problem"> 
         </div>
     </div>
     <div id = "rank" style="float:left;width:calc(30% - 5px)"> 
