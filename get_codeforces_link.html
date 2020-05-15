@@ -15,6 +15,14 @@
                 contests = problems[data].split(",");
                 console.log(contests)
                 list = document.createElement('ul')
+                item = document.createElement('li')
+                item.innerHTML +=  " Link VNOI: "
+                node = document.createElement("a")
+                node.href = `https://vnoi.info/codeforces/${data}`
+                node.innerText = `https://vnoi.info/codeforces/${data}`
+                node.target = "_blank"
+                item.appendChild(node)
+                list.appendChild(item)
                 for (i = 0; i < contests.length; ++i) {
                     contest = contests[i].split('/')
                     contest_id = contest[0]
@@ -46,7 +54,8 @@
 <body onload = "myFunction()">
     
     <p>
-        Nhập mã bài vào ô ở dưới. Các bài mà hiện not found thì có nghĩa là nó chưa/không được add lên CF. Các bạn hong cần report cái này đâu :v. 
+        Lưu ý: hiện tại các bạn có thể vào <a href="https://vnoi.info/problems/list/" target="_blank" > https://vnoi.info/problems/list/ </a> để lấy link bài codeforces, có phân loại tag <br>
+        Hoặc có thể dùng <a href="https://vnoi.info/codeforces/aznet" target="_blank" > https://vnoi.info/codeforces/aznet </a> để trực tiếp tới link bài
     </p>
     <input id= "input" oninput="myFunction()" value = "aZnEt">  </input>
     <div id = "output"> 
@@ -55,7 +64,7 @@
         Các bạn cần vào group <a href="https://codeforces.com/group/FLVn1Sc504" target="_blank" > https://codeforces.com/group/FLVn1Sc504 </a> 
         trước để có thể vào được link, xem hướng dẫn ở <a href="https://www.facebook.com/groups/VNOIForum/permalink/1657908650896629/" target="_blank"> đây </a>
         <br>
-        Nếu đề bài có vấn đề gì, các bạn có thể điền vào sheet này: <a href="https://bit.ly/2R4huMT" target="_blank">https://bit.ly/2R4huMT</a>
+        Nếu đề bài có vấn đề gì, các bạn có thể comment vào post này <a href="https://www.facebook.com/groups/VNOIForum/permalink/3065138366840310/" target="_blank">https://www.facebook.com/groups/VNOIForum/permalink/3065138366840310/</a>
     </p>
     <p>
         :3 Nếu được, các bạn hãy star cái repo này giúp mình nhé :3 Đây là con bot mình viết để giúp mình trong việc chuyển bài từ VOJ sang codeforces :3
