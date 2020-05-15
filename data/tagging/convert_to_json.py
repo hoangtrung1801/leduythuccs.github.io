@@ -81,6 +81,8 @@ def convert_to_json():
     f = open('leduythuccs.github.io/data/tagging/rank_text.txt', 'w')
     for x in rank_info:
         f.write(f"{x} {rank_info[x]}\n")
+    for x in rank_info:
+        print(f"<@{x}>", end=' ')
     f.close()
     rank_info = unicodedata.normalize('NFC', json.dumps(rank_info).replace("\'", "\\\'")).replace('\"', '\\\"').replace('\\u001d', '')
     handle_info = unicodedata.normalize('NFC', json.dumps(handle_info).replace("\'", "\\\'")).replace('\"', '\\\"').replace('\\u001d', '')
