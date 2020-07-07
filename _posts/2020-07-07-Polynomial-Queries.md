@@ -20,27 +20,27 @@ Sau khi thực hiện $$q$$ truy vấn, ta cần in ra mảng $$a$$.
 ### Cách giải
 Nếu như truy vấn chỉ đơn giản là tăng các phần tử trong đoạn lên một hằng số thì ta có thể dễ dàng thực hiện bằng cách:
 
-- Với mỗi truy vấn $$(u, v)$$, ta thực hiện $$a[u] += x; a[v + 1] -= x$$. 
-- Sau khi thực hiện xong các truy vấn, ta gán $$a[i] += a[i - 1]$$ là xong.
+- Với mỗi truy vấn $$(u, v)$$, ta thực hiện $$a[u]$$ += $$x; a[v + 1]$$ -= $$x$$. 
+- Sau khi thực hiện xong các truy vấn, ta gán $$a[i]$$ += $$a[i - 1]$$ là xong.
 
 Ở trên là một trick mà ai cũng biết, nếu không biết thì cũng có thể làm bằng segment tree hoặc Fenwick tree.
 
 Nhưng với bài toán này, các phần tử được tăng lên theo cấp số cộng (công sai là 1), chứ không phải là hằng số. 
 
 Xét truy vấn $$(u, v)$$, việc cập nhật được thực hiện như sau:
-- $$a[u] += 1$$
-- $$a[u + 1] += 2$$
-- $$a[u + 2] += 3$$
+- $$a[u]$$ += $$1$$
+- $$a[u + 1]$$ += $$2$$
+- $$a[u + 2]$$ += $$3$$
 - ...
-- $$a[v] += (v - u + 1)$$
+- $$a[v]$$ += $$(v - u + 1)$$
 
 Cộng $$0 = (u - 1) - (u - 1)$$ vào vế phải của tất cả các phép biến đổi trên. 
 
-- $$a[u] += (1 + (u - 1)) - (u - 1) \Leftrigharrow a[u] += u - (u - 1)$$ 
-- $$a[u + 1] += (2 + (u - 1)) - (u - 1) \Leftrigharrow a[u + 1] += (u + 1) - (u - 1)$$
-- $$a[u + 2] + = (3 + (u - 1)) - (u - 1) \Leftrigharrow a[u + 2] += (u + 2) - (u - 1)$$
+- $$a[u]$$ += $$(1 + (u - 1)) - (u - 1) \Leftrightarrow a[u]$$ += $$u - (u - 1)$$ 
+- $$a[u + 1]$$ += $$(2 + (u - 1)) - (u - 1) \Leftrightarrow a[u + 1]$$ += $$(u + 1) - (u - 1)$$
+- $$a[u + 2]$$ + = $$(3 + (u - 1)) - (u - 1) \Leftrightarrow a[u + 2]$$ += $$(u + 2) - (u - 1)$$
 - ...
-- $$a[v] += ((v - u + 1) + (u - 1)) - (u - 1) \Leftrigharrow a[v] += v - (u - 1)$$
+- $$a[v]$$ += $$((v - u + 1) + (u - 1)) - (u - 1) \Leftrightarrow a[v]$$ += $$v - (u - 1)$$
 
 Tới đây ta có thể nhận thấy điều sau: Mỗi truy vấn $$(u, v)$$ tương ứng với 2 loại truy vấn khác:
 1. Giảm (trừ) tất cả các phần tử trong đoạn $$[u, v]$$ đi một lượng $$(u - 1)$$.
@@ -51,7 +51,7 @@ Bây giờ ta thấy truy vấn 1 chính là truy vấn cơ bản mà mình đã
 
 Việc xử lý truy vấn 2 có thể làm giống code sau:
 
-Để rõ hơn thì các bạn có thể xem pseduo code sau đây. 
+Để rõ hơn thì các bạn có thể xem pseudo code sau đây. 
 ```
 Với mọi truy vấn 2 [u, v]:
     Với mọi i nằm trong đoạn [u, v]
@@ -69,7 +69,7 @@ In ra mảng a
 ```
 Hai code mình vừa trình bày đều có độ phức tạp như nhau, nhưng ở code 2, thì việc tăng cả tất cả các phần tử của mảng $$cnt$$ lên 1 thì nó cũng giống với truy vấn cơ bản ban đầu (tăng cả đoạn lên một hằng số), nên ta có thể tăng tốc nó lên được. Cuối cùng thì ta có một cái code na ná thế này <(")
 ```c++
-for (mọi truy vấn [u, v]) {
+for (\*mọi truy vấn [u, v]*\) {
     //Tách ra làm 2 truy vấn.
     //Truy vấn 1: giảm đoạn [u, v] đi (u - 1)
     b[u] -= u - 1;
