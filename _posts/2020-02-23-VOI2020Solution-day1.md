@@ -75,7 +75,7 @@ Code tham khảo: [BONUS.cpp](/data/VOI2020/BONUS.cpp)
 
 - Tag: DSU, SQRT, DnC
 
-Bài này anh Nghĩa có viết một solution rất đẹp bằng chia để trị, các bạn có thể xem ở: [đây](/data/VOI2020/P2SOL_ngfam). Nhưng mình sẽ viết solution bằng chia căn, xem như là 1 cách tiếp cận khác. Lưu ý rằng dù theo cách tiếp cận nào, bài này là một bài **rất khó** để cài thuật chuẩn. Bài này có rất nhiều cách làm tham, trong giờ thi, chiến thuật tốt nhất là cài hết thuật tham xong merge các thuật đó lại với nhau, gần như không thể sinh test giết được.
+Bài này anh Nghĩa có viết một solution rất đẹp bằng chia để trị, các bạn có thể xem ở: [đây](/data/VOI2020/P2SOL_ngfam.pdf). Nhưng mình sẽ viết solution bằng chia căn, xem như là 1 cách tiếp cận khác. Lưu ý rằng dù theo cách tiếp cận nào, bài này là một bài **rất khó** để cài thuật chuẩn. Bài này có rất nhiều cách làm tham, trong giờ thi, chiến thuật tốt nhất là cài hết thuật tham xong merge các thuật đó lại với nhau, gần như không thể sinh test giết được.
 
 ### Tóm tắt đề bài:
 
