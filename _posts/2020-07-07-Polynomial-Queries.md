@@ -10,6 +10,7 @@ Xin chào, hôm nay mình hơi chán nên ngồi viết blog, lần này là m�
 
 Tuy đây là một thao tác khá nổi tiếng, nhưng để học nó cần trước một số kiến thức cơ bản sau đây: 
 - Segment tree (kết hợp lazy), Fenwick tree. 
+
 Các bạn có thể học Segment tree ở [đây](https://vnoi.info/wiki/algo/data-structures/segment-tree-extend.md) và Fenwick tree ở [đây](https://vnoi.info/wiki/algo/data-structures/fenwick.md) trước khi đọc thêm bài này. 
 
 ## Bài toán 1
@@ -73,7 +74,7 @@ for (moi truy van [u, v]) {
     //Tách ra làm 2 truy vấn.
     //Truy vấn 1: giảm đoạn [u, v] đi (u - 1)
     b[u] -= u - 1;
-    b[u + 1] += u - 1;
+    b[v + 1] += u - 1;
     //Truy vấn 2: a[i] += i -> cnt[i] += 1
     cnt[u] += 1;
     cnt[v + 1] -= 1;
