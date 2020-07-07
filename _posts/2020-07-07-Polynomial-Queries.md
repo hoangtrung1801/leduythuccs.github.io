@@ -69,7 +69,7 @@ In ra mảng a
 ```
 Hai code mình vừa trình bày đều có độ phức tạp như nhau, nhưng ở code 2, thì việc tăng cả tất cả các phần tử của mảng $$cnt$$ lên 1 thì nó cũng giống với truy vấn cơ bản ban đầu (tăng cả đoạn lên một hằng số), nên ta có thể tăng tốc nó lên được. Cuối cùng thì ta có một cái code na ná thế này <(")
 ```c++
-for (\*mọi truy vấn [u, v]*\) {
+for (moi truy van [u, v]) {
     //Tách ra làm 2 truy vấn.
     //Truy vấn 1: giảm đoạn [u, v] đi (u - 1)
     b[u] -= u - 1;
