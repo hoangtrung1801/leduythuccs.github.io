@@ -10,6 +10,7 @@ Xin chào, hôm nay mình hơi chán nên ngồi viết blog, lần này là m�
 
 Tuy đây là một thao tác khá nổi tiếng, nhưng để học nó cần trước một số kiến thức cơ bản sau đây: 
 - Segment tree (kết hợp lazy), Fenwick tree. 
+Các bạn có thể học Segment tree ở [đây](https://vnoi.info/wiki/algo/data-structures/segment-tree-extend.md) và Fenwick tree ở [đây](https://vnoi.info/wiki/algo/data-structures/fenwick.md) trước khi đọc thêm bài này. 
 ## Bài toán 1
 Cho một mảng các số nguyên $$a$$ có $$n$$ phần tử (ban đầu các phần tử khởi tạo bằng 0). Có $$q$$ truy vấn có dạng: 
 - $$u$$ $$v$$: tăng $$a[u]$$ lên 1, tăng $$a[u + 1]$$ lên 2, tăng $$a[u + 2]$$ lên 3, ..., tăng $$a[v]$$ lên $$(v - u + 1)$$
