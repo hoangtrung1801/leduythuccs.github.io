@@ -25,7 +25,7 @@ description: My Blog
 navbar-links:
   Home: "http://leduythuccs.github.io"
   Computer Science : "CS"
-  Linh tinh: "linh_tinh"
+#   Linh tinh: "linh_tinh"
   About Me: "aboutme"
   #Resources:
     #- Beautiful Jekyll: "http://deanattali.com/beautiful-jekyll/"
@@ -75,7 +75,7 @@ author:
 social-network-links:
   rss: true
   email: "leduythuccs@gmail.com"
-  facebook: leduythuccs
+  facebook: leduy.khongngu
   github: leduythuccs
 #  reddit: yourname
 #  google-plus: +DeanAttali
@@ -105,7 +105,7 @@ url-pretty: "Nocs's site"  # eg. "deanattali.com/beautiful-jekyll"
 # --- Web Statistics Section --- #
 
 # Fill in your Google Analytics ID to track your website using GA
-#google_analytics: ""
+google_analytics: "UA-172009364-1"
 
 # Google Tag Manager ID
 #gtm: ""
@@ -121,7 +121,7 @@ url-pretty: "Nocs's site"  # eg. "deanattali.com/beautiful-jekyll"
 
 # --- Misc --- #
 # Fill in your Disqus shortname (NOT the userid) if you want to support Disqus comments
-disqus: "leduythuccs"
+disqus: "leduythuckhongngu"
 
 # Facebook App ID
 # fb_app_id: ""
