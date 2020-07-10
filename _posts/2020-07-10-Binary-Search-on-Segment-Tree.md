@@ -10,7 +10,7 @@ tags:
 ---
 Xin chào, hôm nay mình tiếp tục chán nên tiếp tục viết blog. Lần này tiếp tục viết về cấu trúc dữ liệu, trong bài này mình sẽ nói về một truy vấn thường gặp ghi dùng segment tree, nó có tên gọi là chặt nhị phân trên segment tree, tiếng anh thì có tên là "Binary search over/on segment tree", hoặc là "walk on segment tree". Do hôm qua định chỉ một bạn dùng cái này nhưng mình google không tìm được tutorial nói về nó nên mình viết luôn. Mấy cái tên thì là mình nghe mọi người gọi nên gọi theo thôi :v. Cũng có thuật toán chặt nhị phân trên Fenwick tree nhưng có thể mình sẽ nói ở blog khác.
 
-Tuy đây là một thao tác khá thường gặp, nhưng để học nó cần trước kiến thức cơ bản về segment tree và chặt nhị phân. Các bạn có thể học Segment tree ở [đây](https://vnoi.info/wiki/algo/data-structures/segment-tree-extend.md), chặt 
+Tuy đây là một thao tác khá thường gặp, nhưng để học nó cần trước kiến thức cơ bản về segment tree và chặt nhị phân. Các bạn có thể học Segment tree ở [đây](https://vnoi.info/wiki/algo/data-structures/segment-tree-extend.md).
 
 ## Bài toán 1
 Cho một mảng các số nguyên $$a$$ có $$n$$ phần tử. Có $$q$$ truy vấn có dạng: 
@@ -23,8 +23,11 @@ Do đó, $$min(a[1], a[2], ..., a[i]) = a[i]$$.
 
 Đặt $$f[i] = min(a[1], a[2], ..., a[i])$$. 
 
-Nhận xét 1: Việc tìm $$i$$ nhỏ nhất sao cho $$a[i] \le k$$ cũng tương ứng với việc tìm $$i$$ nhỏ nhất sao cho $$f[i] \le k$$.
-Nhận xét 2: $$f[i - 1] \ge f[i]$$. Nói cách khác, $$f$$ là mảng không tăng. Vậy bài toán có thể phát biểu lại như sau: 
+**Nhận xét 1**: Việc tìm $$i$$ nhỏ nhất sao cho $$a[i] \le k$$ cũng tương ứng với việc tìm $$i$$ nhỏ nhất sao cho $$f[i] \le k$$.
+
+**Nhận xét 2**: $$f[i - 1] \ge f[i]$$. Nói cách khác, $$f$$ là mảng không tăng. 
+
+Vậy bài toán có thể phát biểu lại như sau: 
 
 Cho một mảng các số nguyên $$f$$ đã "sắp xếp" giảm dần, có $$q$$ truy vấn có dạng:
 - $$k$$: tìm $$i$$ nhỏ nhất sao cho $$f[i] \le k$$.
@@ -71,18 +74,18 @@ int query(int k) {
 
 Nhưng nếu chỉ dừng ở đây thì đã không cần blog này rồi <("). Ta nhìn một chút vào cấu trúc cây segment tree (quản lý min) dưới dây: 
 
-![]({{site.baseurl}}/img/segmentTree.png). 
+![]({{site.baseurl}}/img/segmentTree.png =100x100). 
 
 Giả sử ta cần tìm vị trí đầu tiên có giá trị không vượt quá $$2$$. Ta đứng từ gốc, xét 2 con trái phải lần lượt có giá trị là 3 và 2: 
-![]({{site.baseurl}}/img/segmentTree1.png)
+![]({{site.baseurl}}/img/segmentTree1.png =100x100)
 
 Do ta đang cần tìm giá trị không vượt quá 2, nên ta chắc chắn kết quả không nằm trong cây con bên trái (vì min của cây con này là 3, suy ra mọi phần tử được quản lý bởi cây con này đều lớn hơn 2). Và do cây con phải có giá trị là 2, suy ra kết quả chắc chắn nằm cây con này, ta đệ quy xuống cây con bên trái: 
 
-![]({{site.baseurl}}/img/segmentTree2.png)
+![]({{site.baseurl}}/img/segmentTree2.png =100x100)
 
 Tương tự, cây con này có 2 cây con trái và phải, cả 2 đều có giá trị là 2, nghĩa là luôn tồn tại ít nhất một số có giá trị bằng 2 trong cả 2 cây con này, từ đó suy ra cả 2 cây con đều có thể chứa kết quả ta cần tìm. Nhưng do ta muốn tìm vị trí có $$i$$ bé nhất, nên ta sẽ ưu tiên đi vào cây con bên trái (cây con này quản lý các vị trí nhỏ hơn các vị trí của cây con phải). 
 
-![]({{site.baseurl}}/img/segmentTree3.png)
+![]({{site.baseurl}}/img/segmentTree3.png =100x100)
 
 Lập luận tương tự thì ta sẽ biết được kết quả nằm ở cây con trái, lúc này cây chỉ quản lý duy nhất một phần tử nên ta có thể kết luận luôn vị trí cần tìm. 
 
@@ -110,4 +113,4 @@ Cho một mảng các số nguyên $$a$$ có $$n$$ phần tử. Có $$q$$ truy v
 - $$i$$ $$x$$: gán $$a[i] = x$$.
 - $$L k$$: tìm $$i$$ nhỏ nhất sao cho $$L \le i$$ và $$a[i] \le k$$
 
-Hihi mình lười rồi nên nhường cho bạn đọc tiếp đó. 
+Hihi mình lười rồi nên nhường cho bạn đọc tiếp đó.
