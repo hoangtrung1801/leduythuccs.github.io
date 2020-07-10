@@ -7,6 +7,7 @@ tags:
   - CS
   - DS
   - Segment tree
+image: /img/segmentTree.png
 ---
 Xin chào, hôm nay mình tiếp tục chán nên tiếp tục viết blog. Lần này tiếp tục viết về cấu trúc dữ liệu, trong bài này mình sẽ nói về một truy vấn thường gặp ghi dùng segment tree, nó có tên gọi là chặt nhị phân trên segment tree, tiếng anh thì có tên là "Binary search over/on segment tree", hoặc là "walk on segment tree". Do hôm qua định chỉ một bạn dùng cái này nhưng mình google không tìm được tutorial nói về nó nên mình viết luôn. Mấy cái tên thì là mình nghe mọi người gọi nên gọi theo thôi :v. Cũng có thuật toán chặt nhị phân trên Fenwick tree nhưng có thể mình sẽ nói ở blog khác.
 
@@ -74,18 +75,18 @@ int query(int k) {
 
 Nhưng nếu chỉ dừng ở đây thì đã không cần blog này rồi <("). Ta nhìn một chút vào cấu trúc cây segment tree (quản lý min) dưới dây: 
 
-![]({{site.baseurl}}/img/segmentTree.png). 
+![](/img/segmentTree.png). 
 
 Giả sử ta cần tìm vị trí đầu tiên có giá trị không vượt quá $$2$$. Ta đứng từ gốc, xét 2 con trái phải lần lượt có giá trị là 3 và 2: 
-![]({{site.baseurl}}/img/segmentTree1.png)
+![](/img/segmentTree1.png)
 
 Do ta đang cần tìm giá trị không vượt quá 2, nên ta chắc chắn kết quả không nằm trong cây con bên trái (vì min của cây con này là 3, suy ra mọi phần tử được quản lý bởi cây con này đều lớn hơn 2). Và do cây con phải có giá trị là 2, suy ra kết quả chắc chắn nằm cây con này, ta đệ quy xuống cây con bên trái: 
 
-![]({{site.baseurl}}/img/segmentTree2.png)
+![](/img/segmentTree2.png)
 
 Tương tự, cây con này có 2 cây con trái và phải, cả 2 đều có giá trị là 2, nghĩa là luôn tồn tại ít nhất một số có giá trị bằng 2 trong cả 2 cây con này, từ đó suy ra cả 2 cây con đều có thể chứa kết quả ta cần tìm. Nhưng do ta muốn tìm vị trí có $$i$$ bé nhất, nên ta sẽ ưu tiên đi vào cây con bên trái (cây con này quản lý các vị trí nhỏ hơn các vị trí của cây con phải). 
 
-![]({{site.baseurl}}/img/segmentTree3.png)
+![](/img/segmentTree3.png)
 
 Lập luận tương tự thì ta sẽ biết được kết quả nằm ở cây con trái, lúc này cây chỉ quản lý duy nhất một phần tử nên ta có thể kết luận luôn vị trí cần tìm. 
 
@@ -111,7 +112,7 @@ Lưu ý là, với các bài toán mà truy vấn cập nhật là một đoạn
 ## Bài toán 3: 
 Cho một mảng các số nguyên $$a$$ có $$n$$ phần tử. Có $$q$$ truy vấn có dạng: 
 - $$i$$ $$x$$: gán $$a[i] = x$$.
-- $$L k$$: tìm $$i$$ nhỏ nhất sao cho $$L \le i$$ và $$a[i] \le k$$
+- $$L$$ $$k$$: tìm $$i$$ nhỏ nhất sao cho $$L \le i$$ và $$a[i] \le k$$
 
 Bài toán này khó hơn bài toán 2 một chút, đó là có thêm một cận dưới của $i$ (thay vì tìm $$i$$ bé nhất, thì ta cần tìm $$i$$ bé nhất nhưng lớn hơn một số nào đó), ta có thể thay đổi code một tí như sau:
 ```c++
@@ -133,5 +134,4 @@ int query(int root, int l, int r, int lowerbound, int k) {
 ```
 Code này có một chút lạ, khác so với code ở bài toán 2 một chút, ở bài toán 2, thì mỗi lần đệ quy chỉ thăm duy nhất một con trái hoặc phải, nhưng ở code mới này thì một lần đệ quy có thể phải thăm cả 2 con, lý do là vì có thể một cây con nó có min không vượt quá $$k$$, nhưng vị trí đạt min nó có thể nhỏ hơn lowerbound, vì thế ta phải tìm ở cây con khác. 
 
-Để đánh giá độ phức tạp code trên thì hơi rườm rà một chút, nhưng nó vẫn là $$O(logn)$$. Đại ý là ta có thể chứng minh số lần mà $$r < lowerbound$$ sẽ không quá $$O(logn)$$. 
-
+Để đánh giá độ phức tạp code trên thì hơi rườm rà một chút, nhưng nó vẫn là $$O(logn)$$. Đại ý là ta có thể chứng minh số lần mà $$r < lowerbound$$ sẽ không quá $$O(logn)$$.
