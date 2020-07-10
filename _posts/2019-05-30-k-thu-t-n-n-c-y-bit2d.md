@@ -6,7 +6,7 @@ date: '2019-05-30'
 tags:
   - CP
   - BIT2D
-  - CTDL
+  - CS
 ---
 Xin chào, dạo này mình khá chán nên toàn làm những chuyện ngu ngốc, do đó mình chạy đi viết cái blog này cho đỡ chán ._. 
 

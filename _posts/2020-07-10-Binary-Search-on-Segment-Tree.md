@@ -6,7 +6,8 @@ date: '2020-07-10'
 tags:
   - CP
   - DS
-  - Segment tree
+  - Segment Tree
+  - Binary Search
 image: /img/segmentTree.png
 ---
 Xin chào, hôm nay mình tiếp tục chán nên tiếp tục viết blog. Lần này tiếp tục viết về cấu trúc dữ liệu, trong bài này mình sẽ nói về một truy vấn thường gặp ghi dùng segment tree, nó có tên gọi là chặt nhị phân trên segment tree, tiếng anh thì có tên là "Binary search over/on segment tree", hoặc là "walk on segment tree". Do hôm qua định chỉ một bạn dùng cái này nhưng mình google không tìm được tutorial nói về nó nên mình viết luôn. Mấy cái tên thì là mình nghe mọi người gọi nên gọi theo thôi :v. Cũng có thuật toán chặt nhị phân trên Fenwick tree nhưng có thể mình sẽ nói ở blog khác.
