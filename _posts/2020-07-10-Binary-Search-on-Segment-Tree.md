@@ -1,6 +1,6 @@
 ---
 published: true
-title: Chặt nhị phân trên cây segment tree - Binary search over segment tree.
+title: Chặt nhị phân trên segment tree - Binary search over segment tree.
 layout: post
 date: '2020-07-10'
 tags:
