@@ -4,7 +4,7 @@ published: true
 title: 'Một số bài toán quy hoạch động cổ điển - phần 1'
 date: '2019-08-14'
 tags:
-  - CS
+  - CP
   - DP
 ---
 

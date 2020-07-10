@@ -4,7 +4,7 @@ published: false
 title: Tớ đã làm Snake Game trên Pascal như thế nào
 date: '2018-08-01'
 tags:
-  - CS
+  - CP
 ---
 Tối qua tớ không ngủ được nên ngồi code Snake Game bằng Pascal :v thấy cũng thú vị nên chia sẽ cho mọi người cách làm. Các cậu có thể chơi demo ở [đây](https://github.com/leduykhongngu/SnakeGame), mình có để full source code luôn đó :v 
 ### Điều cần biết:

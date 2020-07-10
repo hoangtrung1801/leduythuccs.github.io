@@ -4,7 +4,8 @@ published: true
 title: 'Ngày 1 - Lời giải đề thi HSG quốc gia môn tin học năm 2020'
 date: '2020-02-23'
 tags:
-  - CS
+  - CP
+  - VOI
 ---
 Đề thi ngày 1: [PDF](/data/VOI2020/VOI2020_day_1.pdf).
 

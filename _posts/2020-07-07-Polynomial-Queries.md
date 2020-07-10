@@ -4,7 +4,7 @@ title: Truy vấn cập nhật bậc thang - Polynomial Queries
 layout: post
 date: '2020-07-07'
 tags:
-  - CS
+  - CP
 ---
 Xin chào, hôm nay mình hơi chán nên ngồi viết blog, lần này là một bài toán thao tác khá là nổi tiếng trên cấu trúc dữ liệu segment tree, Fenwick tree nhưng vẫn chưa có nhiều nguồn nói về nó bằng tiếng Việt. Cái tên gọi "cập nhật bậc thang"/"update bậc thang" là mình thường nghe những người xung quanh nói thôi chứ cũng không có tên gọi nào chính thức cho nó.
 

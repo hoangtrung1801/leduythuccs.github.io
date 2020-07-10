@@ -24,7 +24,7 @@ description: My Blog
 # List of links in the navigation bar
 navbar-links:
   Home: "http://leduythuccs.github.io"
-  Computer Science : "CS"
+  Competitive programming : "CP"
 #   Linh tinh: "linh_tinh"
   About Me: "aboutme"
   #Resources:

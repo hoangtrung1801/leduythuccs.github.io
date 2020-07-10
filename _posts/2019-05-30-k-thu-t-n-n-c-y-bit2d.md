@@ -4,7 +4,7 @@ published: true
 title: 'Kỹ thuật nén cây BIT2D '
 date: '2019-05-30'
 tags:
-  - CS
+  - CP
   - BIT2D
   - CTDL
 ---

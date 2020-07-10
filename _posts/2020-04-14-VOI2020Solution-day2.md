@@ -4,7 +4,8 @@ title: Ngày 2 - Lời giải đề thi HSG quốc gia môn tin học năm 2020
 layout: post
 date: '2020-04-14'
 tags:
-  - CS
+  - CP
+  - VOI
 ---
 Solution ngày 1: [blog](/2020-02-23-VOI2020Solution-day1)
 

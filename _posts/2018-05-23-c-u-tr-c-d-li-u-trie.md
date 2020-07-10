@@ -4,7 +4,7 @@ published: true
 title: Cấu trúc dữ liệu Trie
 subtitle: 'Trie is love, Trie is life'
 date: 2018/05/23
-tags: [CS,Trie,CTDL]
+tags: [CP,Trie,DS]
 image: /img/trie1.png
 ---
 Xin chào, hôm nay không thấy có contest gì, cũng đang lười học nên thôi viết một cái blog về Trie – một cấu trúc dữ liệu mình cực kì thích (nếu không muốn nói là thích nhất trong tất cả các CTDL mình đã học). Ở phạm vi bài viết này, mình sẽ không nói về những thứ cơ bản của Trie (như là Trie là gì), mình sẽ nói về 1 số thứ mình thường lấy Trie để dùng, còn nếu các bạn muốn tìm hiểu thêm về trie thì có thể xem ở [vnoi](http://vnoi.info/wiki/algo/data-structures/trie).

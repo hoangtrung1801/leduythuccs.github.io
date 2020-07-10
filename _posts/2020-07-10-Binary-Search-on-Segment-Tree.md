@@ -4,7 +4,7 @@ title: Chặt nhị phân trên cây segment tree - Binary search over segment t
 layout: post
 date: '2020-07-10'
 tags:
-  - CS
+  - CP
   - DS
   - Segment tree
 image: /img/segmentTree.png
