@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: Chặt nhị phân trên cây segment tree - Binary search over segment tree.
 layout: post
 date: '2020-07-10'
@@ -74,18 +74,18 @@ int query(int k) {
 
 Nhưng nếu chỉ dừng ở đây thì đã không cần blog này rồi <("). Ta nhìn một chút vào cấu trúc cây segment tree (quản lý min) dưới dây: 
 
-![]({{site.baseurl}}/img/segmentTree.png =100x100). 
+![]({{site.baseurl}}/img/segmentTree.png). 
 
 Giả sử ta cần tìm vị trí đầu tiên có giá trị không vượt quá $$2$$. Ta đứng từ gốc, xét 2 con trái phải lần lượt có giá trị là 3 và 2: 
-![]({{site.baseurl}}/img/segmentTree1.png =100x100)
+![]({{site.baseurl}}/img/segmentTree1.png)
 
 Do ta đang cần tìm giá trị không vượt quá 2, nên ta chắc chắn kết quả không nằm trong cây con bên trái (vì min của cây con này là 3, suy ra mọi phần tử được quản lý bởi cây con này đều lớn hơn 2). Và do cây con phải có giá trị là 2, suy ra kết quả chắc chắn nằm cây con này, ta đệ quy xuống cây con bên trái: 
 
-![]({{site.baseurl}}/img/segmentTree2.png =100x100)
+![]({{site.baseurl}}/img/segmentTree2.png)
 
 Tương tự, cây con này có 2 cây con trái và phải, cả 2 đều có giá trị là 2, nghĩa là luôn tồn tại ít nhất một số có giá trị bằng 2 trong cả 2 cây con này, từ đó suy ra cả 2 cây con đều có thể chứa kết quả ta cần tìm. Nhưng do ta muốn tìm vị trí có $$i$$ bé nhất, nên ta sẽ ưu tiên đi vào cây con bên trái (cây con này quản lý các vị trí nhỏ hơn các vị trí của cây con phải). 
 
-![]({{site.baseurl}}/img/segmentTree3.png =100x100)
+![]({{site.baseurl}}/img/segmentTree3.png)
 
 Lập luận tương tự thì ta sẽ biết được kết quả nằm ở cây con trái, lúc này cây chỉ quản lý duy nhất một phần tử nên ta có thể kết luận luôn vị trí cần tìm. 
 
@@ -113,4 +113,25 @@ Cho một mảng các số nguyên $$a$$ có $$n$$ phần tử. Có $$q$$ truy v
 - $$i$$ $$x$$: gán $$a[i] = x$$.
 - $$L k$$: tìm $$i$$ nhỏ nhất sao cho $$L \le i$$ và $$a[i] \le k$$
 
-Hihi mình lười rồi nên nhường cho bạn đọc tiếp đó.
+Bài toán này khó hơn bài toán 2 một chút, đó là có thêm một cận dưới của $i$ (thay vì tìm $$i$$ bé nhất, thì ta cần tìm $$i$$ bé nhất nhưng lớn hơn một số nào đó), ta có thể thay đổi code một tí như sau:
+```c++
+int query(int root, int l, int r, int lowerbound, int k) {
+    if (st[root] > k) return -1; //nếu cả đoạn [l, r] đều lớn hơn k thì không thỏa mãn
+  	if (r < lowerbound) return -1; //ta chỉ xét những vị trí không nhỏ hơn lowerbound
+    if (l == r) return l; //khi đoạn có 1 phần tử thì đó là kết quả
+    int mid = (l + r) / 2;
+  	int res = -1; 
+    if (st[root * 2] <= k) //nếu min cây con trái không vượt quá k
+        res = query(root * 2, l, mid, lowerbound, k);
+  	//nếu cây con trái không tìm được kết quả <=> min nằm ngoài lowerbound
+    //thì ta sẽ tìm kết quả ở cây con phải
+  	if (res == -1)  
+      	res = query(root * 2, mid + 1, r, lowerbound, k);
+    return res;
+}
+//cout << query(1, 1, n, l, k);
+```
+Code này có một chút lạ, khác so với code ở bài toán 2 một chút, ở bài toán 2, thì mỗi lần đệ quy chỉ thăm duy nhất một con trái hoặc phải, nhưng ở code mới này thì một lần đệ quy có thể phải thăm cả 2 con, lý do là vì có thể một cây con nó có min không vượt quá $$k$$, nhưng vị trí đạt min nó có thể nhỏ hơn lowerbound, vì thế ta phải tìm ở cây con khác. 
+
+Để đánh giá độ phức tạp code trên thì hơi rườm rà một chút, nhưng nó vẫn là $$O(logn)$$. Đại ý là ta có thể chứng minh số lần mà $$r < lowerbound$$ sẽ không quá $$O(logn)$$. 
+
